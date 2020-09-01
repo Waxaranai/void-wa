@@ -1,4 +1,3 @@
-/* eslint-disable new-parens */
 import { readdir } from "fs";
 import { resolve } from "path";
 import type VoidClient from "./VoidClient";
@@ -6,20 +5,21 @@ import type { Message } from "whatsapp-web.js";
 import type { CommandSchema, CategoriesSchema } from "../interfaces";
 
 export default class CommandHandler {
-    public commands: Map<string, CommandSchema> = new Map;
-    public categories: Map<string, CategoriesSchema> = new Map;
+    public commands: Map<string, CommandSchema> = new Map();
+    public categories: Map<string, CategoriesSchema> = new Map();
     public constructor(readonly client: VoidClient, readonly prefix: string, readonly path: string) { }
     public async handle(msg: Message): Promise<void> {
         if (msg.fromMe || !msg.body || !msg.body.startsWith(this.prefix)) return undefined;
         const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
         if (!commandID) return undefined;
-        const command = this.commands.get(commandID) as CommandSchema;
+        const command = this.commands.get(commandID) || Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID)) as CommandSchema;
         if (!command) return undefined;
+        if (!this.client.config.developers.includes(msg.from) && command.options.devOnly) return undefined;
         const chat = await msg.getChat();
         if (chat.isReadOnly) return undefined;
-        if (chat.isGroup && command.options!.privateOnly) return undefined;
-        if (!chat.isGroup && command.options!.groupOnly) return undefined;
+        if (chat.isGroup && command.options.privateOnly) return undefined;
+        if (!chat.isGroup && command.options.groupOnly) return undefined;
         try {
             command.exec(msg, args);
         } catch (e) { console.error(e); }

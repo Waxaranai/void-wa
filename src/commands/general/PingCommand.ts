@@ -4,7 +4,7 @@ import type VoidClient from "../../classes/VoidClient";
 
 export default class PingCommand extends Command {
     public constructor(readonly client: VoidClient) {
-        super(client, "ping", { content: "Ping pong!" }, { category: "general" });
+        super(client, "ping", { content: "Ping pong!" }, { category: "general", aliases: [] });
     }
     public exec(msg: Message): void {
         msg.reply("Pong!");
