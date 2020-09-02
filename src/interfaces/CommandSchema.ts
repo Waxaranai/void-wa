@@ -8,6 +8,7 @@ export interface CommandSchema {
     handler?: CommandHandler;
     categories?: CategoriesSchema;
     options: {
+        cooldown?: number;
         aliases: string[];
         category: string;
         devOnly?: boolean;
