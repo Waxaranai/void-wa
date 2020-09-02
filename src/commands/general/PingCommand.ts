@@ -7,6 +7,6 @@ export default class PingCommand extends Command {
         super(client, "ping", { content: "Ping pong!" }, { category: "general", aliases: [] });
     }
     public exec(msg: Message): void {
-        msg.reply("Pong!");
+        msg.reply("Pong!", msg.from);
     }
 }

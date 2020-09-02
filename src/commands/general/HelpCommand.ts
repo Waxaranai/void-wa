@@ -15,14 +15,14 @@ export default class HelpCommand extends Command {
             for (const cat of Array.from(this.client.commandHandler.categories.values())) {
                 content += stripIndent(`\n*${firstUpperCase(cat.name)}*\n${cat.commands.map(x => `*${this.handler.prefix}${x.id}* - ${x.description.content}`).join("\n")}`);
             }
-            this.client.sendMessage(msg.from, content);
+            msg.reply(content, msg.from);
         } else {
-            this.client.sendMessage(msg.from, stripIndent(`
+            msg.reply(stripIndent(`
             Command info *${this.handler.prefix}${command.id}*
             ${command.description.content}
 
             *Aliases:* ${command.options.aliases.length > 0 ? command.options.aliases.map(x => x).join(", ") : "No Aliases"}
-            `));
+            `), msg.from);
         }
     }
 }
