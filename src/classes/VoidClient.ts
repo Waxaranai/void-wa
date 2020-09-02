@@ -7,7 +7,7 @@ import EventLoader from "../util/EventLoader";
 import type { ClientOptions } from "whatsapp-web.js";
 
 export default class VoidClient extends Client {
-    readonly commandHandler: CommandHandler = new CommandHandler(this, "/", resolve(__dirname, "..", "commands"));
+    readonly commandHandler: CommandHandler = new CommandHandler(this, config.prefix, resolve(__dirname, "..", "commands"));
     readonly config = config;
     readonly http = express();
     public constructor(readonly options: ClientOptions) {
