@@ -3,7 +3,10 @@ import { resumeSession, sessionPath } from "./config";
 import { existsSync } from "fs";
 import type { ClientSession } from "whatsapp-web.js";
 
-let sessionData: ClientSession;
-if (existsSync(sessionPath) && resumeSession) sessionData = require(sessionPath);
+let sessionData: ClientSession | undefined;
+if (existsSync(sessionPath) && resumeSession) {
+    sessionData = require(sessionPath);
+    if (!sessionData!.WABrowserId || !sessionData!.WASecretBundle || !sessionData!.WAToken1 || !sessionData!.WAToken2) sessionData = undefined;
+}
 
 new VoidClient({ session: sessionData! }).setup();
