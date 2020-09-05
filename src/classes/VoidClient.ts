@@ -3,12 +3,14 @@ import { resolve } from "path";
 import { toDataURL } from "qrcode";
 import express from "express";
 import config from "../config";
+import request from "superagent";
 import CommandHandler from "./CommandHandler";
 import EventLoader from "../util/EventLoader";
 import type { ClientOptions } from "whatsapp-web.js";
 
 export default class VoidClient extends Client {
     public qr = "";
+    readonly request = request;
     readonly commandHandler: CommandHandler = new CommandHandler(this, config.prefix, resolve(__dirname, "..", "commands"));
     readonly config = config;
     readonly http = express();
