@@ -11,9 +11,9 @@ export default class HelpCommand extends Command {
     public exec(msg: Message, args: string[]): void {
         const command = this.client.commandHandler.commands.get(args[0]) || Array.from(this.handler.commands.values()).find(x => x.options.aliases.includes(args[0]));
         if (!command) {
-            let content = "*Command's List*\n\n";
+            let content = "*Command's List*\n";
             for (const cat of Array.from(this.client.commandHandler.categories.values())) {
-                content += stripIndent(`\n*${firstUpperCase(cat.name)}*\n${cat.commands.map(x => `*${this.handler.prefix}${x.id}* - ${x.description.content}`).join("\n")}`);
+                content += `\n*${firstUpperCase(cat.name)}*\n${cat.commands.map(x => `*${this.handler.prefix}${x.id}* - ${x.description.content}`).join("\n")}`;
             }
             msg.reply(content, msg.from);
         } else {
