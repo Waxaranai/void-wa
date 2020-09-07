@@ -9,4 +9,4 @@ if (existsSync(sessionPath) && resumeSession) {
     if (!sessionData!.WABrowserId || !sessionData!.WASecretBundle || !sessionData!.WAToken1 || !sessionData!.WAToken2) sessionData = undefined;
 }
 
-new VoidClient({ session: sessionData! }).setup();
+new VoidClient({ session: sessionData!, puppeteer: { headless: true, args: ["--no-sandbox", "--disable-setuid-sandbox", "--unhandled-rejections=strict"] } }).setup();
