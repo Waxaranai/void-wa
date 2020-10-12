@@ -12,7 +12,7 @@
         "resolveJsonModule": true,
         "typeRoots": [
             "node_modules/@types",
-            "src/interfaces"
+            "src/typings"
         ],
         "outDir": "./dist"
     },
