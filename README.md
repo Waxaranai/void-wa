@@ -7,25 +7,40 @@ Clone this project
 ```bash
 > git clone https://github.com/Waxaranai/void.git
 > cd void
-
 ```
 
-Install the dependencies:
+Install the dependencies (make sure you're in the project directory that you've just cloned):
 
 ```bash
 > npm i
+# or using yarn
+> yarn
 ```
 ### Run the bot
 
-1. Rename `session_example.json` to `session.json`
-
+1. Build the code 
+```bash
+> npm run build
+# or using yarn
+> yarn build
+```
 2. Run the code
 ```bash
-> npm run build && npm start
+> npm start
+# or using yarn
+> yarn start
 ```
-3. Open your browser and go to `http://localhost:3000` (`3000` is the default port from config)
-4. Scan the qr code with your Whatsapp
-5. And start using the bot by typing `/help`
+
+
+### Troubleshooting
+Make sure all the necessary dependencies are installed.
+https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+
+Fix Stuck on linux, install google chrome stable:
+```bash
+> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+> sudo apt install ./google-chrome-stable_current_amd64.deb
+```
 
 ### How to contribute
 1. Fork it!
@@ -33,3 +48,10 @@ Install the dependencies:
 3. Commit your changes: `git commit -am "Add some feature"`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
+
+### Donate
+* [`Saweria`](https://saweria.co/donate/waxaranai)
+
+### Inspired by
+* [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
+* [`MhankBarBar/whatsapp-bot`](https://github.com/MhankBarBar/whatsapp-bot)
