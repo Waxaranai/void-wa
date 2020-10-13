@@ -1,10 +1,15 @@
-import VoidBot from "./libs/Client";
+import VoidBot from "./libs/Void";
 import config from "./config";
 import server from "./server";
 import { ev, QRFormat, QRQuality } from "@open-wa/wa-automate";
 import { existsSync, mkdirSync, unlinkSync, writeFileSync } from "fs";
 
+ev.on("authenticated.**", () => {
+    console.log("Client authenticated! removing qrcode image.");
+    if (existsSync("rc/public/qrcode.png")) unlinkSync("src/public/qrcode.png");
+});
 ev.on("qr.**", qrcode => {
+    console.log(`QRCode received! You can scan it from the terminal or http://localhost:${config.port}/qr`);
     if (!existsSync("src/public")) mkdirSync("src/public");
     if (existsSync("rc/public/qrcode.png")) unlinkSync("src/public/qrcode.png");
     writeFileSync("src/public/qrcode.png", Buffer.from(
@@ -12,7 +17,6 @@ ev.on("qr.**", qrcode => {
         "base64"
     ));
 });
-
 new VoidBot(config, {
     authTimeout: 0,
     autoRefresh: true,

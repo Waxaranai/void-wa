@@ -5,12 +5,24 @@ import type { ICategories, ICommand } from "../typings";
 import Command from "../libs/Command";
 
 export default class MessageHandler {
+    public readonly cooldowns = new Map<string, Map<string, any>>();
     public readonly commands = new Map<string, ICommand>();
     public readonly categories: ICategories[] = [];
     public constructor(public readonly client: Client, public readonly prefix: string) { }
 
     public async runCommand(msg: Message, args: string[], command: Command): Promise<void> {
-        try {
+        if (!this.cooldowns.has(command.id)) this.cooldowns.set(command.id, new Map());
+        const now = Date.now();
+        const timestamps: Map<string, number> = this.cooldowns.get(command.id)!;
+        const cooldownAmount = (command.options.cooldown ?? 5) * 1000;
+        if (timestamps.has(msg.chatId)) {
+            const expirationTime = timestamps.get(msg.chatId)! + cooldownAmount;
+            if (now < expirationTime) return undefined;
+            timestamps.set(msg.chatId, now);
+            setTimeout(() => timestamps.delete(msg.chatId), cooldownAmount);
+        } else {
+            timestamps.set(msg.chatId, now);
+        } try {
             await command.exec(msg, args);
         } catch (error) {
             console.log(error);
@@ -18,11 +30,16 @@ export default class MessageHandler {
     }
 
     public handle(msg: Message): void {
-        if (!this.prefix.length || msg.fromMe || !msg.body || !msg.body.startsWith(this.prefix)) return undefined;
+        if (!this.prefix.length || !msg.body.startsWith(this.prefix)) return undefined;
         const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
         const command = this.commands.get(commandID!) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
+        if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
+        if (msg.fromMe && !command.options.meOnly) return undefined;
+        if (!msg.fromMe && command.options.meOnly) return undefined;
+        if (msg.isGroupMsg && command.options.privateOnly) return undefined;
+        if (!msg.isGroupMsg && command.options.groupOnly) return undefined;
         void this.runCommand(msg, args, command);
     }
 
