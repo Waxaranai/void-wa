@@ -7,25 +7,26 @@ export interface ICommand {
     client?: Client;
     handler?: MessageHandler;
     categories?: ICategories;
-    options: {
-        cooldown?: number;
-        aliases: string[];
-        category: string;
-        devOnly?: boolean;
-        groupOnly?: boolean;
-        privateOnly?: boolean;
-    };
-    description: {
-        content: string;
-        usage?: string;
-    };
-    exec(msg: Message, args?: string[]): Promise<any>;
+    options: ICommandOptions;
+    description: ICommandDescription;
+    exec(msg: Message, args?: string[]): Promise<any> | any;
 }
-
+export interface ICommandOptions {
+    cooldown?: number;
+    aliases: string[];
+    category: string;
+    devOnly?: boolean;
+    groupOnly?: boolean;
+    privateOnly?: boolean;
+}
+export interface ICommandDescription {
+    content: string;
+    usage?: string;
+}
 
 export interface ICategories {
     name: string;
-    path: string;
+    path?: string;
     commands: ICommand[];
 }
 export interface IHandler {

@@ -102,3 +102,6 @@ dist
 
 # QRCode
 src/public/qrcode.png
+
+# Session
+session.data.json

@@ -5,10 +5,14 @@ div.center {
 
 h1.title {
     text-align: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
     margin-bottom: 3rem;
 }
 
 img.qr {
-    height: 512px;
-    width: 512px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    height: 256px;
+    width: 256px;
 }
