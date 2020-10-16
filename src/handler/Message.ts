@@ -22,6 +22,7 @@ export default class MessageHandler {
             setTimeout(() => timestamps.delete(msg.sender.id), cooldownAmount);
         } else {
             timestamps.set(msg.sender.id, now);
+            if (msg.fromMe) timestamps.delete(msg.from);
         } try {
             await command.exec(msg, args);
         } catch (error) {
