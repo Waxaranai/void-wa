@@ -11,7 +11,7 @@ ev.on("authenticated.**", () => {
 ev.on("qr.**", qrcode => {
     console.log(`QRCode received! You can scan it from the terminal or http://localhost:${config.port}/qr`);
     if (!existsSync("src/public")) mkdirSync("src/public");
-    if (existsSync("rc/public/qrcode.png")) unlinkSync("src/public/qrcode.png");
+    if (existsSync("src/public/qrcode.png")) unlinkSync("src/public/qrcode.png");
     writeFileSync("src/public/qrcode.png", Buffer.from(
         qrcode.replace("data:image/png;base64,", ""),
         "base64"
