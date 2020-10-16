@@ -36,7 +36,6 @@ export default class MessageHandler {
         const command = this.commands.get(commandID!) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
-        if (msg.fromMe && !command.options.meOnly) return undefined;
         if (!msg.fromMe && command.options.meOnly) return undefined;
         if (msg.isGroupMsg && command.options.privateOnly) return undefined;
         if (!msg.isGroupMsg && command.options.groupOnly) return undefined;
