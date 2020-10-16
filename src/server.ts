@@ -4,6 +4,7 @@ import { resolve } from "path";
 export default (port: number): void => {
     const app = express();
     app.use("/style.css", express.static(resolve("src/public/style.css")));
+    app.use("/qrcode.png", express.static(resolve("src/public/qrcode.png")));
 
     app.set("view engine", "html");
     const authenticated = !existsSync("src/public/qrcode.png");
