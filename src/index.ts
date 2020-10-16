@@ -5,7 +5,7 @@ import { ev, QRFormat, QRQuality } from "@open-wa/wa-automate";
 import { existsSync, mkdirSync, unlinkSync, writeFileSync } from "fs";
 
 ev.on("**", (data, _, namespace) => {
-    const scanned = (data === "SUCCESS" || data === "sucessfulScan") && namespace === "QR";
+    const scanned = (data === "SUCCESS" || data === "successfulScan") && namespace === "QR";
     if (scanned) {
         console.log("Client authenticated! removing qrcode image.");
         if (existsSync("src/public/qrcode.png")) unlinkSync("src/public/qrcode.png");
