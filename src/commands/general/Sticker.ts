@@ -1,8 +1,8 @@
 import type { Client, Message } from "@open-wa/wa-automate";
 import { decryptMedia } from "@open-wa/wa-automate";
-import Command from "../../libs/Command";
+import BaseCommand from "../../libs/BaseCommand";
 
-export default class StickerCommand extends Command {
+export default class StickerCommand extends BaseCommand {
     public constructor(public readonly client: Client) {
         super("sticker", {
             aliases: ["stiker"],

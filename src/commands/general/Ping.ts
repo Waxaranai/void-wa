@@ -1,8 +1,8 @@
 /* eslint-disable no-negated-condition */
 import type { Client, Message } from "@open-wa/wa-automate";
-import Command from "../../libs/Command";
+import BaseCommand from "../../libs/BaseCommand";
 
-export default class PingCommand extends Command {
+export default class PingCommand extends BaseCommand {
     public constructor(public readonly client: Client) {
         super("ping", {
             aliases: [],

@@ -1,16 +1,16 @@
 import type { Client, Message } from "@open-wa/wa-automate";
-import type { ICategories, ICommand } from "../typings";
+import type { ICategories } from "../typings";
 import { join } from "path";
 import readdirRecursive from "../util/ReaddirRecursive";
-import Command from "../libs/Command";
+import BaseCommand from "../libs/BaseCommand";
 
 export default class MessageHandler {
     public readonly cooldowns = new Map<string, Map<string, any>>();
-    public readonly commands = new Map<string, ICommand>();
+    public readonly commands = new Map<string, BaseCommand>();
     public readonly categories: ICategories[] = [];
     public constructor(public readonly client: Client, public readonly prefix: string) { }
 
-    public async runCommand(msg: Message, args: string[], command: Command): Promise<void> {
+    public async runCommand(msg: Message, args: string[], command: BaseCommand): Promise<void> {
         if (!this.cooldowns.has(command.id)) this.cooldowns.set(command.id, new Map());
         const now = Date.now();
         const timestamps: Map<string, number> = this.cooldowns.get(command.id)!;
@@ -51,7 +51,7 @@ export default class MessageHandler {
         for (const file of files) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const load = require(file).default;
-            if (!load || !(load.prototype instanceof Command)) continue;
+            if (!load || !(load.prototype instanceof BaseCommand)) continue;
             const command = this.getCommand(file);
             loaded.push(command.id);
             this.registry(command);
@@ -60,22 +60,22 @@ export default class MessageHandler {
     }
 
 
-    public registry(command: string | Command): void {
+    public registry(command: string | BaseCommand): void {
         if (typeof command === "string") command = this.getCommand(command);
         this.addToCategory(command);
         this.commands.set(command.id, command);
     }
 
-    public getCommand(path: string): Command {
+    public getCommand(path: string): BaseCommand {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const command: ICommand = new (require(path).default)(this.client);
+        const command: BaseCommand = new (require(path).default)(this.client);
         command.client = this.client;
         command.path = path;
         command.handler = this;
         return command;
     }
 
-    public addToCategory(command: Command): void {
+    public addToCategory(command: BaseCommand): void {
         const category: ICategories = this.categories.find(x => x.name === command.options.category) ?? {
             name: command.options.category || "Uncategorized",
             commands: []
