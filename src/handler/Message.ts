@@ -1,7 +1,7 @@
-import { join } from "path";
-import readdirRecursive from "../util/ReaddirRecursive";
 import type { Client, Message } from "@open-wa/wa-automate";
 import type { ICategories, ICommand } from "../typings";
+import { join } from "path";
+import readdirRecursive from "../util/ReaddirRecursive";
 import Command from "../libs/Command";
 
 export default class MessageHandler {
