@@ -26,7 +26,7 @@ export default class StickerCommand extends BaseCommand {
         }
     }
 
-    public async create(message: Message, isQuoted: boolean): Promise<void> {
+    private async create(message: Message, isQuoted: boolean): Promise<void> {
         const msg = isQuoted ? message.quotedMsg : message;
         const media = await decryptMedia(msg, this.client.config.UserAgent);
         const imageBase64 = `data:${msg.mimetype};base64,${media.toString("base64")}`;
