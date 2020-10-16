@@ -3,12 +3,17 @@ import { existsSync } from "fs";
 import { resolve } from "path";
 export default (port: number): void => {
     const app = express();
-    if (existsSync("src/public")) app.use(express.static(resolve("src/public")));
+    app.use("/style.css", express.static(resolve("src/public/style.css")));
 
     app.set("view engine", "html");
+    const authenticated = !existsSync("src/public/qrcode.png");
     app.get("/qr", (_, response) => {
-        const authenticated = !existsSync("src/public/qrcode.png");
-        if (authenticated) return response.status(200).send("Already authenticated!");
+        if (authenticated) {
+            return response.status(200).json({
+                message: "Client already authenticated!",
+                status: 200
+            });
+        }
         return response.status(200).sendFile(resolve("src/public/index.html"));
     });
     app.get("*", (_, response) => response.redirect("/qr"));
