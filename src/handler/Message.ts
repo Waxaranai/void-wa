@@ -31,6 +31,7 @@ export default class MessageHandler {
     }
 
     public handle(msg: Message): void {
+        msg.body = msg.isMedia && msg.type === "image" ? (msg.caption ? msg.caption : "") : msg.body;
         if (!this.prefix.length || !msg.body.startsWith(this.prefix)) return undefined;
         const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
