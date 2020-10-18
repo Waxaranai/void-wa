@@ -6,7 +6,7 @@ import MessageHandler from "../handler/Message";
 
 export default class Void {
     public constructor(public readonly config: typeof VoidConfig, public readonly options: ConfigObject) {
-        void create(this, options).then(client => {
+        void create(options).then(client => {
             const handler = new MessageHandler(client, this.config.prefix);
             void handler.loadAll();
             client.handler = handler;

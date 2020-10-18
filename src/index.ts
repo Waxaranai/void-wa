@@ -23,7 +23,6 @@ ev.on("qr.**", qrcode => {
 });
 new VoidBot(config, {
     authTimeout: 0,
-    autoRefresh: true,
     cacheEnabled: false,
     chromiumArgs: [
         "--no-sandbox",
@@ -40,7 +39,6 @@ new VoidBot(config, {
     qrFormat: QRFormat.PNG,
     qrLogSkip: true,
     qrQuality: QRQuality.EIGHT,
-    qrRefreshS: 20,
     qrTimeout: 0,
     restartOnCrash: true,
     throwErrorOnTosBlock: false,
