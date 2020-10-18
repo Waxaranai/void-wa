@@ -4,14 +4,29 @@
 <head>
     <title>Scan the QRCode!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
     <div class="center">
-        <h1 class="title">Scan the QRCode!</h1>
-        <img class="qr" src="qrcode.png">
+        <h1 id="title" class="title">Scan the QRCode!</h1>
+        <img id="qr-img" class="qr hide" src="qrcode.png">
     </div>
 </body>
+
+<script>
+    const qrcode = document.getElementById("qr-img");
+
+    // If you want change the port please also change the port on config.ts
+    const socket = io("localhost:5050");
+
+    socket.on("qr", () => qrcode.classList.remove("hide"));
+    socket.on("authenticated", () => {
+        document.getElementById("title").innerText = "Authenticated!";
+        document.querySelector("title").innerText = "Authenticated"
+        qrcode.classList.add("hide");
+    })
+</script>
 
 </html>

@@ -13,3 +13,7 @@ img.qr {
     height: 256px;
     width: 256px;
 }
+
+.hide {
+    display: none;
+}

@@ -13,7 +13,7 @@ ev.on("**", (data, _, namespace) => {
     }
 });
 ev.on("qr.**", qrcode => {
-    console.log(`QRCode received! You can scan it from the terminal or http://localhost:${config.port}/qr`);
+    console.log(`QRCode received! Scan it from http://localhost:${config.port}/qr`);
     if (!existsSync("src/public")) mkdirSync("src/public");
     if (QRExist) unlinkSync("src/public/qrcode.png");
     writeFileSync("src/public/qrcode.png", Buffer.from(
