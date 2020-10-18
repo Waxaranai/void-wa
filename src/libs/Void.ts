@@ -11,6 +11,7 @@ export default class Void {
             void handler.loadAll();
             client.handler = handler;
             client.config = config;
+            client.wait = async (ms: number): Promise<NodeJS.Timeout> => new Promise(resolve => setTimeout(resolve, ms));
             void client.onAnyMessage(message => {
                 void client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
                 handler.handle(message);
@@ -28,5 +29,6 @@ declare module "@open-wa/wa-automate" {
     interface Client {
         handler: MessageHandler;
         config: typeof VoidConfig;
+        wait?(ms: number): Promise<NodeJS.Timeout>;
     }
 }
