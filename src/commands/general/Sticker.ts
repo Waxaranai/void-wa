@@ -7,7 +7,7 @@ export default class StickerCommand extends BaseCommand {
         super("sticker", {
             aliases: ["stiker"],
             category: "general",
-            cooldown: 15
+            cooldown: 30
         }, {
             content: "Create sticker from a image."
         });
