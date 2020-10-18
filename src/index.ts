@@ -33,6 +33,7 @@ new VoidBot(config, {
         "--disable-offline-load-stale-cache",
         "--disk-cache-size=0"
     ],
+    deleteSessionDataOnLogout: false,
     disableSpins: true,
     headless: true,
     killProcessOnBrowserClose: true,

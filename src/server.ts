@@ -13,9 +13,9 @@ export default (port: number): void => {
     app.use("/qrcode.png", express.static(resolve("src/public/qrcode.png")));
     app.set("view engine", "html");
 
-    const authenticated = !existsSync("src/public/qrcode.png");
 
     io.on("connection", socket => {
+        const authenticated = !existsSync("src/public/qrcode.png");
         if (authenticated) socket.emit("authenticated");
         else socket.emit("qr");
     });
