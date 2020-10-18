@@ -105,3 +105,6 @@ src/public/qrcode.png
 
 # Session
 session.data.json
+
+# Node persist
+.node-persist
