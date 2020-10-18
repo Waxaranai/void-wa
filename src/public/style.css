@@ -1,12 +1,11 @@
 div.center {
     display: grid;
+    justify-items: center;
     justify-content: center;
 }
 
 h1.title {
     text-align: center;
-    margin-left: 3rem;
-    margin-right: 3rem;
     margin-bottom: 3rem;
 }
 
