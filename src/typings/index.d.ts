@@ -10,7 +10,7 @@ export interface ICommand {
     options: ICommandOptions;
     description: ICommandDescription;
     exec(msg: Message, args?: string[]): Promise<any> | any;
-    parseArgs?(query: steing[]): IParsedArgs;
+    parseArgs?(query: string[]): IParsedArgs;
 }
 export interface ICommandOptions {
     cooldown?: number;
