@@ -14,7 +14,7 @@ export default class Void {
             client.wait = async (ms: number): Promise<NodeJS.Timeout> => new Promise(resolve => setTimeout(resolve, ms));
             void client.onAnyMessage(message => {
                 void client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
-                handler.handle(message);
+                void handler.handle(message);
             });
             void client.onStateChanged(state => {
                 if (state === "CONFLICT" || state === "UNLAUNCHED") void client.forceRefocus();
