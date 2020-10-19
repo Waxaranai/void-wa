@@ -22,7 +22,7 @@ export default class MessageHandler {
             setTimeout(() => timestamps.delete(msg.sender.id), cooldownAmount);
         } else {
             timestamps.set(msg.sender.id, now);
-            if (msg.fromMe) timestamps.delete(msg.from);
+            if (msg.fromMe) timestamps.delete(msg.sender.id);
         } try {
             await command.exec(msg, args);
         } catch (error) {
@@ -30,7 +30,9 @@ export default class MessageHandler {
         }
     }
 
-    public handle(msg: Message): void {
+    public async handle(msg: Message): Promise<void> {
+        const blocked = await this.client.getBlockedIds();
+        if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
         msg.body = msg.isMedia && msg.type === "image" ? (msg.caption ? msg.caption : "") : msg.body;
         if (!this.prefix.length || !msg.body.startsWith(this.prefix)) return undefined;
         const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
@@ -41,7 +43,7 @@ export default class MessageHandler {
         if (!msg.fromMe && command.options.meOnly) return undefined;
         if (msg.isGroupMsg && command.options.privateOnly) return undefined;
         if (!msg.isGroupMsg && command.options.groupOnly) return undefined;
-        void this.runCommand(msg, args, command);
+        await this.runCommand(msg, args, command);
     }
 
     public loadAll(): void {

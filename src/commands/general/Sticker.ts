@@ -9,7 +9,8 @@ export default class StickerCommand extends BaseCommand {
             category: "general",
             cooldown: 30
         }, {
-            content: "Create sticker from a image."
+            content: "Create sticker from a image.",
+            usage: "sticker [--to-image]"
         });
     }
 
