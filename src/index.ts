@@ -21,6 +21,10 @@ ev.on("qr.**", qrcode => {
         "base64"
     ));
 });
+ev.on("STARTUP.**", data => {
+    if (QRExist && data === "SUCCESS") unlinkSync("src/public/qrcode.png");
+});
+
 new VoidBot(config, {
     authTimeout: 0,
     cacheEnabled: false,
