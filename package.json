@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@hazmi35/eslint-config": "hazmi35/eslint-config",
-    "@open-wa/wa-automate": "^3.0.1",
+    "@open-wa/wa-automate": "^3.0.3",
     "@types/socket.io": "^2.1.11",
     "common-tags": "^1.8.0",
     "eslint": "^7.11.0",
