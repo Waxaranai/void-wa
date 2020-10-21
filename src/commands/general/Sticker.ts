@@ -9,8 +9,8 @@ export default class StickerCommand extends BaseCommand {
             category: "general",
             cooldown: 30
         }, {
-            content: "Create sticker from a image.",
-            usage: "[--to-image]"
+            content: "Create sticker from a image. or get the image from a sticker",
+            usage: "[--to-img]"
         });
     }
 
@@ -24,14 +24,14 @@ export default class StickerCommand extends BaseCommand {
             } catch (error) {
                 await this.client.sendText(msg.chatId, "An error occured while trying to create the sticker!");
             }
-        } else if (isSticker && flags.includes("to-image")) {
+        } else if (isSticker && flags.includes("to-img")) {
             try {
                 await this.create(msg, true, true);
             } catch (error) {
                 await this.client.sendText(msg.chatId, "An error occured while trying to convert the sticker!");
             }
-        } else if (!isSticker && flags.includes("to-image")) {
-            await this.client.sendText(msg.chatId, `Please reply a sticker with message *${this.handler!.prefix}sticker --to-image*`);
+        } else if (!isSticker && flags.includes("to-img")) {
+            await this.client.sendText(msg.chatId, `Please reply a sticker with message *${this.handler!.prefix}sticker --to-img*`);
         } else {
             await this.client.sendText(msg.chatId, `Please send image with *${this.handler!.prefix}sticker* caption or reply on a image!`);
         }
