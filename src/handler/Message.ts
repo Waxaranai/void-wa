@@ -14,7 +14,7 @@ export default class MessageHandler {
         if (!this.cooldowns.has(command.id)) this.cooldowns.set(command.id, new Map());
         const now = Date.now();
         const timestamps: Map<string, number> = this.cooldowns.get(command.id)!;
-        const cooldownAmount = (command.options.cooldown ?? 5) * 1000;
+        const cooldownAmount = (command.options.cooldown ?? 10) * 1000;
         if (timestamps.has(msg.sender.id)) {
             const expirationTime = timestamps.get(msg.sender.id)! + cooldownAmount;
             if (now < expirationTime) return undefined;
