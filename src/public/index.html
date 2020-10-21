@@ -17,9 +17,7 @@
 
 <script>
     const qrcode = document.getElementById("qr-img");
-
-    // If you want change the port please also change the port on config.ts
-    const socket = io("localhost:5050");
+    const socket = io(document.location.host); // localhost:port from browser address
 
     socket.on("qr", () => qrcode.classList.remove("hide"));
     socket.on("authenticated", () => {
