@@ -41,11 +41,10 @@ export default class StickerCommand extends BaseCommand {
         const msg = isQuoted ? message.quotedMsg : message;
         const media = await decryptMedia(msg, this.client.config.UserAgent);
         const imageBase64 = `data:${msg.mimetype};base64,${media.toString("base64")}`;
-        // eslint-disable-next-line no-negated-condition
         if (!toImage) {
             await this.client.sendImageAsSticker(message.chatId, imageBase64);
-        } else {
-            await this.client.sendFile(message.chatId, imageBase64, "converted.png", "");
+            return undefined;
         }
+        await this.client.sendFile(message.chatId, imageBase64, "converted.png", "");
     }
 }

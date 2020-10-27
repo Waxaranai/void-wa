@@ -16,8 +16,8 @@ export default (port: number): void => {
 
     io.on("connection", socket => {
         const authenticated = !existsSync("src/public/qrcode.png");
-        if (authenticated) socket.emit("authenticated");
-        else socket.emit("qr");
+        if (authenticated) return socket.emit("authenticated");
+        return socket.emit("qr");
     });
     app.get("/qr", (_, response) => response.status(200).sendFile(resolve("src/public/index.html")));
     app.get("*", (_, response) => response.redirect("/qr"));
