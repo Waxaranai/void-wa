@@ -40,6 +40,11 @@ export default class MessageHandler {
         const command = this.commands.get(commandID!) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
+        if (command.options.adminOnly && !command.options.groupOnly) return undefined;
+        if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
+            const adminList = await this.client.getGroupAdmins(msg.chatId);
+            if (!adminList.includes(msg.sender.id)) return undefined;
+        }
         if (!msg.fromMe && command.options.meOnly) return undefined;
         if (msg.isGroupMsg && command.options.privateOnly) return undefined;
         if (!msg.isGroupMsg && command.options.groupOnly) return undefined;
@@ -56,6 +61,10 @@ export default class MessageHandler {
             const load = require(file).default;
             if (!load || !(load.prototype instanceof BaseCommand)) continue;
             const command = this.getCommand(file);
+            if (command.options.adminOnly && !command.options.groupOnly) {
+                console.error(`adminOnly options only available if groupOnly is set to true on ${file}`);
+                continue;
+            }
             loaded.push(command.id);
             this.registry(command);
         }

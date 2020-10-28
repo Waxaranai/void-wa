@@ -18,6 +18,7 @@ export interface ICommandOptions {
     category: string;
     meOnly?: boolean;
     devOnly?: boolean;
+    adminOnly?: boolean;
     groupOnly?: boolean;
     privateOnly?: boolean;
 }
