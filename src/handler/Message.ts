@@ -32,7 +32,7 @@ export default class MessageHandler {
 
     public async handle(msg: Message): Promise<void> {
         const blocked = await this.client.getBlockedIds();
-        if (blocked.includes(msg.from) && !msg.fromMe) return undefined;
+        if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
         msg.body = (msg.type === "chat" && msg.body.startsWith(this.prefix)) ? msg.body : ((msg.type === "image" && msg.caption) && msg.caption.startsWith(this.prefix)) ? msg.caption : "";
         if (!this.prefix.length || !msg.body.startsWith(this.prefix)) return undefined;
         const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
