@@ -21,9 +21,7 @@ export default class HelpCommand extends BaseCommand {
             let base = "*Command List*\n\n";
             const modules = handler.categories;
             for (const mod of modules) {
-                base += stripIndent(`
-            *${this.firstUpperCase(mod.name)}*
-            ${mod.commands.map(x => x.id).join(", ") || "None"}`);
+                base += `*${this.firstUpperCase(mod.name)}*\n${mod.commands.map(x => x.id).join(", ") || "None"}\n`;
             }
             await this.client.sendText(msg.chatId, base);
             return undefined;
