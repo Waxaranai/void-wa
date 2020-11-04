@@ -29,6 +29,6 @@ declare module "@open-wa/wa-automate" {
     interface Client {
         handler: MessageHandler;
         config: typeof VoidConfig;
-        wait?(ms: number): Promise<NodeJS.Timeout>;
+        wait(ms: number): Promise<NodeJS.Timeout>;
     }
 }
