@@ -18,7 +18,12 @@
     "eslintConfig": {
         "extends": "@hazmi35/eslint-config/typescript/node",
         "rules": {
-            "@typescript-eslint/consistent-type-imports": ["warn", { "prefer": "type-imports" }]
+            "@typescript-eslint/consistent-type-imports": [
+                "warn",
+                {
+                    "prefer": "type-imports"
+                }
+            ]
         }
     },
     "devDependencies": {
