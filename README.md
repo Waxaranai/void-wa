@@ -1,7 +1,14 @@
 # Void Bot
 Void Bot is a Whatsapp Bot, this is my first open source project, if there is a mistake feel free to open a issues.
 
-### Install
+**NOTE:** I can't guarantee you will not be blocked by using this code, although it has worked for me. WhatsApp does not allow bots or unofficial clients on their platform, so this shouldn't be considered totally safe.
+
+### Prerequisites
+- Nodejs v10.18.1+ (due to puppeteer)
+- Typescript v3.9x+
+- latest version of Google Chrome
+
+### Installation
 Clone this project
 
 ```bash
@@ -9,27 +16,29 @@ Clone this project
 > cd void
 ```
 
-Install the dependencies (make sure you're in the project directory that you've just cloned):
+Install the dependencies (`make sure you're in the project directory that you've just cloned`):
 
 ```bash
 > npm i
-# or using yarn
+# or with yarn
 > yarn
 ```
-### Run the bot
+### Using the bot
 
 1. Build the code 
 ```bash
 > npm run build
-# or using yarn
+# or with yarn
 > yarn build
 ```
 2. Run the code
 ```bash
 > npm start
-# or using yarn
+# or with yarn
 > yarn start
 ```
+3. Open http://localhost:5050/qr and scan the qrcode with your Whatsapp app (`or you can modify the create config to show the qrcode on terminal`)
+4. Start using the bot by typing `$help` (to change the prefix change it at `config.ts`)
 
 
 ### Troubleshooting
