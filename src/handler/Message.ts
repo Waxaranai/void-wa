@@ -1,8 +1,7 @@
 import type { Client, Message } from "@open-wa/wa-automate";
 import type { ICategories } from "../typings";
-import { join } from "path";
-import readdirRecursive from "../util/ReaddirRecursive";
 import BaseCommand from "../libs/BaseCommand";
+import { join } from "path";
 
 export default class MessageHandler {
     public readonly cooldowns = new Map<string, Map<string, any>>();
@@ -55,7 +54,7 @@ export default class MessageHandler {
         console.log("Loading commands...");
         const loaded = [];
         const path = join(__dirname, "../commands");
-        const files = readdirRecursive(path);
+        const files = this.client.util.readdirRecursive(path);
         for (const file of files) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const load = require(file).default;
