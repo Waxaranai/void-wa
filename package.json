@@ -36,11 +36,11 @@
         "dotenv": "^8.2.0",
         "rimraf": "^3.0.2",
         "ts-node": "^9.0.0",
-        "typescript": "^4.0.2"
+        "typescript": "^4.0.5"
     },
     "dependencies": {
         "@hazmi35/eslint-config": "hazmi35/eslint-config",
-        "@open-wa/wa-automate": "^3.0.12",
+        "@open-wa/wa-automate": "^3.0.13",
         "@types/socket.io": "^2.1.11",
         "common-tags": "^1.8.0",
         "eslint": "^7.12.1",
