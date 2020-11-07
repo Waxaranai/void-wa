@@ -16,15 +16,7 @@
         "test": "yarn lint && yarn build"
     },
     "eslintConfig": {
-        "extends": "@hazmi35/eslint-config/typescript/node",
-        "rules": {
-            "@typescript-eslint/consistent-type-imports": [
-                "warn",
-                {
-                    "prefer": "type-imports"
-                }
-            ]
-        }
+        "extends": "@hazmi35/eslint-config/typescript/node"
     },
     "devDependencies": {
         "@types/common-tags": "^1.8.0",

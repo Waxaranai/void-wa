@@ -1,5 +1,4 @@
-import type { Client, Message } from "@open-wa/wa-automate";
-import { decryptMedia } from "@open-wa/wa-automate";
+import { Client, Message, decryptMedia } from "@open-wa/wa-automate";
 import BaseCommand from "../../libs/BaseCommand";
 
 export default class StickerCommand extends BaseCommand {

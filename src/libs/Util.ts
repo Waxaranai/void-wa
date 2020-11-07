@@ -1,4 +1,4 @@
-import type { Client } from "@open-wa/wa-automate";
+import { Client } from "@open-wa/wa-automate";
 import { readdirSync, statSync } from "fs";
 import { join } from "path";
 

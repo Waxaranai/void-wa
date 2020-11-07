@@ -1,5 +1,5 @@
-import type { Client, Message } from "@open-wa/wa-automate";
-import type MessageHandler from "../handler/Message";
+import { Client, Message } from "@open-wa/wa-automate";
+import MessageHandler from "../handler/Message";
 
 export interface ICommand {
     id: string;

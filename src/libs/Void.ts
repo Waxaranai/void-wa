@@ -1,7 +1,5 @@
-import type VoidConfig from "../config";
-import type { ConfigObject } from "@open-wa/wa-automate";
-
-import { create } from "@open-wa/wa-automate";
+import VoidConfig from "../config";
+import { create, ConfigObject } from "@open-wa/wa-automate";
 import MessageHandler from "../handler/Message";
 import Util from "./Util";
 

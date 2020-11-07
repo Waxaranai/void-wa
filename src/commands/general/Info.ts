@@ -1,4 +1,4 @@
-import type { Client, Message } from "@open-wa/wa-automate";
+import { Client, Message } from "@open-wa/wa-automate";
 import BaseCommand from "../../libs/BaseCommand";
 
 export default class InfoCommand extends BaseCommand {

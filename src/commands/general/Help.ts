@@ -1,4 +1,4 @@
-import type { Client, Message } from "@open-wa/wa-automate";
+import { Client, Message } from "@open-wa/wa-automate";
 import { stripIndent } from "common-tags";
 import BaseCommand from "../../libs/BaseCommand";
 

@@ -1,6 +1,6 @@
-import type MessageHandler from "../handler/Message";
-import type { Client, Message } from "@open-wa/wa-automate";
-import type { ICommand, ICommandDescription, ICommandOptions, IParsedArgs } from "../typings";
+import MessageHandler from "../handler/Message";
+import { Client, Message } from "@open-wa/wa-automate";
+import { ICommand, ICommandDescription, ICommandOptions, IParsedArgs } from "../typings";
 
 export default class BaseCommand implements ICommand {
     public path = __dirname;

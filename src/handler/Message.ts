@@ -1,5 +1,5 @@
-import type { Client, Message } from "@open-wa/wa-automate";
-import type { ICategories } from "../typings";
+import { Client, Message } from "@open-wa/wa-automate";
+import { ICategories } from "../typings";
 import BaseCommand from "../libs/BaseCommand";
 import { join } from "path";
 
