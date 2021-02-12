@@ -23,9 +23,12 @@ export default class MessageHandler {
             timestamps.set(msg.sender.id, now);
             if (msg.fromMe) timestamps.delete(msg.sender.id);
         } try {
+            await this.client.simulateTyping(msg.chatId as any, true);
             await command.exec(msg, args);
         } catch (error) {
             console.log(error);
+        } finally {
+            await this.client.simulateTyping(msg.chatId as any, false);
         }
     }
 
