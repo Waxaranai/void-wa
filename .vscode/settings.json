@@ -1,0 +1,8 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.packageManager": "yarn",
+    "npm.packageManager": "yarn",
+    "files.eol": "\n",
+    "javascript.preferences.quoteStyle": "double",
+    "typescript.preferences.quoteStyle": "double"
+}

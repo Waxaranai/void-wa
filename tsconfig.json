@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
+        "target": "ES2019",
         "module": "commonjs",
         "allowJs": true,
         "strict": true,
@@ -8,11 +8,12 @@
         "noImplicitAny": true,
         "alwaysStrict": true,
         "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "typeRoots": [
             "node_modules/@types",
-            "src/interfaces"
+            "src/typings"
         ],
         "outDir": "./dist"
     },

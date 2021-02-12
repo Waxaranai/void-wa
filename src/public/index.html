@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scan the QRCode!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="center">
+        <h1 id="title" class="title">Scan the QRCode!</h1>
+        <img id="qr-img" class="qr hide" src="qrcode.png">
+    </div>
+</body>
+
+<script>
+    const qrcode = document.getElementById("qr-img");
+    const socket = io(document.location.host); // localhost:port from browser address
+
+    socket.on("qr", () => qrcode.classList.remove("hide"));
+    socket.on("authenticated", () => {
+        document.getElementById("title").innerText = "Authenticated!";
+        document.querySelector("title").innerText = "Authenticated"
+        qrcode.classList.add("hide");
+    })
+</script>
+
+</html>

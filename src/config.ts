@@ -1,7 +1,5 @@
-export const name = "Void Bot";
-export const prefix = "/";
-export const PORT = 3000;
-export const developers = ["6288215470045@c.us"] as string[];
-export const resumeSession = true as boolean;
-export const sessionPath = `${process.cwd()}/src/session.json`;
-export default { name, prefix, PORT, developers, resumeSession, sessionPath };
+export const prefix = "$";
+export const port = 5050;
+export const UserAgent = "WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
+
+export default { prefix, port, UserAgent };
