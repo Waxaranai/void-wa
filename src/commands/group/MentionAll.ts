@@ -15,11 +15,11 @@ export default class MentionAllCommand extends BaseCommand {
 
     public async exec(msg: Message): Promise<void> {
         const result: string[] = [];
-        const members = await this.client.getGroupMembers(msg.chatId);
+        const members = await this.client.getGroupMembers(msg.chatId as any);
         for (const member of members) {
             if (member.isMe) continue;
             else result.push(`@${(member.id as string).replace(/@c.us/g, "")}`);
         }
-        await this.client.sendTextWithMentions(msg.chatId, result.join(" "));
+        await this.client.sendTextWithMentions(msg.chatId as any, result.join(" "));
     }
 }

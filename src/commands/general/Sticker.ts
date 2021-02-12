@@ -21,18 +21,18 @@ export default class StickerCommand extends BaseCommand {
             try {
                 await this.create(msg, isQuotedImage);
             } catch (error) {
-                await this.client.sendText(msg.chatId, "An error occured while trying to create the sticker!");
+                await this.client.sendText(msg.chatId as any, "An error occured while trying to create the sticker!");
             }
         } else if (isSticker && flags.includes("to-img")) {
             try {
                 await this.create(msg, true, true);
             } catch (error) {
-                await this.client.sendText(msg.chatId, "An error occured while trying to convert the sticker!");
+                await this.client.sendText(msg.chatId as any, "An error occured while trying to convert the sticker!");
             }
         } else if (!isSticker && flags.includes("to-img")) {
-            await this.client.sendText(msg.chatId, `Please reply a sticker with message *${this.handler!.prefix}sticker --to-img*`);
+            await this.client.sendText(msg.chatId as any, `Please reply a sticker with message *${this.handler!.prefix}sticker --to-img*`);
         } else {
-            await this.client.sendText(msg.chatId, `Please send image with *${this.handler!.prefix}sticker* caption or reply on a image!`);
+            await this.client.sendText(msg.chatId as any, `Please send image with *${this.handler!.prefix}sticker* caption or reply on a image!`);
         }
     }
 
@@ -41,9 +41,9 @@ export default class StickerCommand extends BaseCommand {
         const media = await decryptMedia(msg, this.client.config.UserAgent);
         const imageBase64 = `data:${msg.mimetype};base64,${media.toString("base64")}`;
         if (!toImage) {
-            await this.client.sendImageAsSticker(message.chatId, imageBase64);
+            await this.client.sendImageAsSticker(message.chatId as any, imageBase64);
             return undefined;
         }
-        await this.client.sendFile(message.chatId, imageBase64, "converted.png", "");
+        await this.client.sendFile(message.chatId as any, imageBase64, "converted.png", "");
     }
 }

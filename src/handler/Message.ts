@@ -41,7 +41,7 @@ export default class MessageHandler {
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
         if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
-            const adminList = await this.client.getGroupAdmins(msg.chatId);
+            const adminList = await this.client.getGroupAdmins(msg.chatId as any) as string[];
             if (!adminList.includes(msg.sender.id)) return undefined;
         }
         if (!msg.fromMe && command.options.meOnly) return undefined;
