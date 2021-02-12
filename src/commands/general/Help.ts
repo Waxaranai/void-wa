@@ -1,19 +1,17 @@
-import { Client, Message } from "@open-wa/wa-automate";
+import { Message } from "@open-wa/wa-automate";
 import { stripIndent } from "common-tags";
+import { DefineCommand } from "../../decorators/DefineCommand";
 import BaseCommand from "../../libs/BaseCommand";
 
-export default class HelpCommand extends BaseCommand {
-    public constructor(public readonly client: Client) {
-        super("help", {
-            aliases: ["menu", "h"],
-            category: "general"
-
-        }, {
-            content: "Generating command list",
-            usage: "[command]"
-        });
+@DefineCommand("help", {
+    aliases: ["menu", "h"],
+    category: "general",
+    description: {
+        content: "Generating command list",
+        usage: "[command]"
     }
-
+})
+export default class extends BaseCommand {
     public async exec(msg: Message, args: string[]): Promise<void> {
         const handler = this.handler!;
         const command = handler.commands.get(args[0]) ?? Array.from(handler.commands.values()).find(x => x.options.aliases.includes(args[0]));
@@ -28,10 +26,10 @@ export default class HelpCommand extends BaseCommand {
         }
         const detail = stripIndent(`
         Command info for *${command.id}*
-        _${command.description.content ? command.description.content : "No description available"}_
+        _${command.options.description.content ? command.options.description.content : "No description available"}_
 
         *Aliases:* ${command.options.aliases.join(", ") || "No aliases"}
-        *Usage:* ${command.description.usage ? `${handler.prefix}${command.id} ${command.description.usage}` : `${handler.prefix}${command.id}`}
+        *Usage:* ${command.options.description.usage ? `${handler.prefix}${command.id} ${command.options.description.usage}` : `${handler.prefix}${command.id}`}
         *Cooldown:* ${command.options.cooldown ? `${command.options.cooldown}s` : "10s"}
 
         ℹ️ _<> means required and [ ] means optional, don't include <> or [ ] when using command._

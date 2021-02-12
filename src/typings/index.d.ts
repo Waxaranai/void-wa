@@ -8,7 +8,6 @@ export interface ICommand {
     handler?: MessageHandler;
     categories?: ICategories;
     options: ICommandOptions;
-    description: ICommandDescription;
     exec(msg: Message, args?: string[]): Promise<any> | any;
     parseArgs?(query: string[]): IParsedArgs;
 }
@@ -16,6 +15,7 @@ export interface ICommandOptions {
     cooldown?: number;
     aliases: string[];
     category: string;
+    description: ICommandDescription;
     meOnly?: boolean;
     devOnly?: boolean;
     adminOnly?: boolean;

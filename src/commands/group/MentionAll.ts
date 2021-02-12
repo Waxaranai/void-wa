@@ -1,18 +1,16 @@
-import { Client, Message } from "@open-wa/wa-automate";
+import { Message } from "@open-wa/wa-automate";
+import { DefineCommand } from "../../decorators/DefineCommand";
 import BaseCommand from "../../libs/BaseCommand";
-
-export default class MentionAllCommand extends BaseCommand {
-    public constructor(public readonly client: Client) {
-        super("mentionall", {
-            aliases: ["everyone"],
-            category: "group",
-            groupOnly: true,
-            adminOnly: true
-        }, {
-            content: "Mention all group members"
-        });
-    }
-
+@DefineCommand("mentionall", {
+    adminOnly: true,
+    aliases: ["everyone"],
+    category: "group",
+    description: {
+        content: "Mention all group members"
+    },
+    groupOnly: true
+})
+export default class extends BaseCommand {
     public async exec(msg: Message): Promise<void> {
         const result: string[] = [];
         const members = await this.client.getGroupMembers(msg.chatId as any);

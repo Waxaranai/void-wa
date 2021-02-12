@@ -1,18 +1,17 @@
-import { Client, Message, decryptMedia } from "@open-wa/wa-automate";
+import { Message, decryptMedia } from "@open-wa/wa-automate";
+import { DefineCommand } from "../../decorators/DefineCommand";
 import BaseCommand from "../../libs/BaseCommand";
 
-export default class StickerCommand extends BaseCommand {
-    public constructor(public readonly client: Client) {
-        super("sticker", {
-            aliases: ["stiker"],
-            category: "general",
-            cooldown: 30
-        }, {
-            content: "Create sticker from a image. or get the image from a sticker",
-            usage: "[--to-img]"
-        });
+@DefineCommand("sticker", {
+    aliases: ["stiker"],
+    category: "general",
+    cooldown: 30,
+    description: {
+        content: "Create sticker from a image. or get the image from a sticker",
+        usage: "[--to-img]"
     }
-
+})
+export default class extends BaseCommand {
     public async exec(msg: Message, query: string[]): Promise<void> {
         const { flags } = this.parseArgs(query);
         const isQuotedImage = msg.quotedMsg && msg.quotedMsg.type === "image";

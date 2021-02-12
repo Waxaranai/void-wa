@@ -1,12 +1,11 @@
 import MessageHandler from "../handler/Message";
 import { Client, Message } from "@open-wa/wa-automate";
-import { ICommand, ICommandDescription, ICommandOptions, IParsedArgs } from "../typings";
+import { ICommand, ICommandOptions, IParsedArgs } from "../typings";
 
 export default class BaseCommand implements ICommand {
     public path = __dirname;
     public handler: MessageHandler | undefined;
-    public client: Client | undefined;
-    public constructor(public readonly id: string, public readonly options: ICommandOptions, public readonly description: ICommandDescription) {
+    public constructor(public client: Client, public id: string, public options: ICommandOptions) {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
