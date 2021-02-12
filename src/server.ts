@@ -1,10 +1,11 @@
-import express from "express";
 import http from "http";
-import { existsSync } from "fs";
+import express from "express";
 import { resolve } from "path";
+import { existsSync } from "fs";
+import { Client } from "@open-wa/wa-automate";
 import { Server as SocketServer, Socket } from "socket.io";
 
-export default (port: number): void => {
+export default (client: Client, port: number): void => {
     const app = express();
     const server = http.createServer(app);
     const io = new SocketServer(server);
@@ -21,5 +22,5 @@ export default (port: number): void => {
     });
     app.get("/qr", (_, response) => response.status(200).sendFile(resolve("src/public/index.html")));
     app.get("*", (_, response) => response.redirect("/qr"));
-    server.listen(port, () => console.log(`Listening to ${port}`));
+    server.listen(port, () => client.log.info(`Listening to ${port}`));
 };

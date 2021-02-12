@@ -1,6 +1,5 @@
 import VoidBot from "./libs/Void";
 import config from "./config";
-import server from "./server";
 import { ev, QRFormat, QRQuality } from "@open-wa/wa-automate";
 import { existsSync, mkdirSync, unlinkSync, writeFileSync } from "fs";
 
@@ -51,5 +50,3 @@ new VoidBot(config, {
     throwErrorOnTosBlock: false,
     useChrome: true
 });
-
-server(config.port);

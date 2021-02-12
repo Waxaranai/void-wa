@@ -1,4 +1,5 @@
 import Util from "./Util";
+import server from "../server";
 import VoidConfig from "../config";
 import MessageHandler from "../handler/Message";
 import { Logger } from "winston";
@@ -13,6 +14,7 @@ export default class Void {
             client.util = new Util(client);
             client.log = createLogger();
             void handler.loadAll();
+            void server(client, config.port);
             await client.onAnyMessage(async message => {
                 await client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
                 await client.sendSeen(message.chatId as any);
@@ -23,8 +25,8 @@ export default class Void {
                     await client.forceRefocus();
                     return undefined;
                 }
-                if (state === "CONNECTED") console.log("Connected to the phone!");
-                if (state === "UNPAIRED") console.log("Logged out!");
+                if (state === "CONNECTED") client.log.debug("Connected to the phone!");
+                if (state === "UNPAIRED") client.log.debug("Logged out!");
             });
         });
     }
