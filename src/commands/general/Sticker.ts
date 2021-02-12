@@ -38,7 +38,7 @@ export default class extends BaseCommand {
             }
             await this.client.sendImageAsSticker(message.chatId as any, imageBase64, { author: "Void", pack: "Created by" });
         } catch (e) {
-            console.error(e);
+            this.client.log.error(e);
             await this.client.sendText(message.chatId as any, "An error occured when trying to create the sticker.");
         }
     }

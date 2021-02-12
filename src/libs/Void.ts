@@ -1,8 +1,9 @@
-import VoidConfig from "../config";
-import { create, ConfigObject } from "@open-wa/wa-automate";
-import MessageHandler from "../handler/Message";
 import Util from "./Util";
-
+import VoidConfig from "../config";
+import MessageHandler from "../handler/Message";
+import { Logger } from "winston";
+import { createLogger } from "./Logger";
+import { create, ConfigObject } from "@open-wa/wa-automate";
 export default class Void {
     public constructor(public readonly config: typeof VoidConfig, public readonly options: ConfigObject) {
         void create(options).then(async client => {
@@ -10,6 +11,7 @@ export default class Void {
             client.handler = handler;
             client.config = config;
             client.util = new Util(client);
+            client.log = createLogger();
             void handler.loadAll();
             await client.onAnyMessage(async message => {
                 await client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
@@ -33,5 +35,6 @@ declare module "@open-wa/wa-automate" {
         handler: MessageHandler;
         config: typeof VoidConfig;
         util: Util;
+        log: Logger;
     }
 }

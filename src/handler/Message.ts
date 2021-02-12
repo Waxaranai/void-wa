@@ -26,7 +26,7 @@ export default class MessageHandler {
             await this.client.simulateTyping(msg.chatId as any, true);
             await command.exec(msg, args);
         } catch (error) {
-            console.log(error);
+            this.client.log.error(error);
         } finally {
             await this.client.simulateTyping(msg.chatId as any, false);
         }
@@ -54,7 +54,7 @@ export default class MessageHandler {
     }
 
     public loadAll(): void {
-        console.log("Loading commands...");
+        this.client.log.info("Loading commands...");
         const loaded = [];
         const path = join(__dirname, "../commands");
         const files = this.client.util.readdirRecursive(path);
@@ -64,13 +64,13 @@ export default class MessageHandler {
             if (!load || !(load.prototype instanceof BaseCommand)) continue;
             const command = this.getCommand(file);
             if (command.options.adminOnly && !command.options.groupOnly) {
-                console.error(`adminOnly options only available if groupOnly is set to true on ${file}`);
+                this.client.log.error(`adminOnly options only available if groupOnly is set to true on ${file}`);
                 continue;
             }
             loaded.push(command.id);
             this.registry(command);
         }
-        console.log(`Loaded ${loaded.length} command.`);
+        this.client.log.info(`Loaded ${loaded.length} command.`);
     }
 
 
