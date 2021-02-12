@@ -77,12 +77,12 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@open-wa/wa-automate@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.4.0.tgz#3f4b0888a29202e7864ef2b8be866266aa74cc83"
-  integrity sha512-dsANPsG5U2wZjd826X64FYlb2WLxaTymyWW9w5ofHg8WQ7gg2YBzJJxo2geC2DFyvRngOxAonuRUV0ljzWGCiA==
+"@open-wa/wa-automate@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.4.1.tgz#86176ded7667e879d57dfa23f8ffc134e501a60f"
+  integrity sha512-fF9DDossMb6bN2hlJSY+Nil8/10gq/20p9EHhB6mI3vvLEtwkLzfqnjoTWhw5ciuu9vH2dsU0uU5CrQtwFOvuQ==
   dependencies:
-    "@open-wa/wa-decrypt" "^3.0.0"
+    "@open-wa/wa-decrypt" "^3.0.1"
     "@types/sharp" "^0.27.1"
     atob "^2.1.2"
     axios "^0.21.0"
@@ -109,7 +109,7 @@
     parse-function "^5.6.10"
     parse-url "^5.0.2"
     postman-2-swagger "^0.5.0"
-    puppeteer "^7.0.0"
+    puppeteer "7.0.0"
     puppeteer-extra "^3.1.9"
     puppeteer-extra-plugin-block-resources "^2.2.7"
     puppeteer-extra-plugin-devtools "^2.2.8"
@@ -124,16 +124,16 @@
     tcp-port-used "^1.0.1"
     terminal-link "^2.1.1"
     tree-kill "^1.2.2"
-    ts-json-schema-generator "^0.83.2"
+    ts-json-schema-generator "^0.84.0"
     ts-morph "^9.1.0"
     typescript-parser "^2.6.1"
     update-notifier "^5.0.0"
     uuid-apikey "^1.4.6"
 
-"@open-wa/wa-decrypt@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-decrypt/-/wa-decrypt-3.0.0.tgz#2b05c7378b724ac7d09fb48565af77c9ea6902b2"
-  integrity sha512-q+pntLdDlp/cTKTu+kpbDxHcKO1aNWKkl7uOrMXzL5b7qyM0WV88AUPMMmehP6NeEkK6f9RTuNYZqDzD0GfcbQ==
+"@open-wa/wa-decrypt@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-decrypt/-/wa-decrypt-3.0.1.tgz#089fdda4f277e29ae47b7d24db527f6c1851c594"
+  integrity sha512-inGOS6u175wtcMoeoL7WhgOisAjNrRRSfwVd3NzpvSD20mxk1R7S56Yo+8hLb9mn7SoPx9Qr9Jqqr2FwNtswjQ==
   dependencies:
     atob "^2.1.2"
     axios "^0.21.0"
@@ -300,7 +300,12 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/node@*", "@types/node@^14.14.10", "@types/node@^14.14.26":
+"@types/node@*", "@types/node@^14.14.10":
+  version "14.14.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.27.tgz#c7127f8da0498993e13b1a42faf1303d3110d2f2"
+  integrity sha512-Ecfmo4YDQPwuqTCl1yBxLV5ihKfRlkBmzUEDcfIRvDxOTGQEeikr317Ln7Gcv0tjA8dVgKI3rniqW2G1OyKDng==
+
+"@types/node@^14.14.26":
   version "14.14.26"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.26.tgz#e40df24c957568f350cca04e63bfb1e1556d1cbf"
   integrity sha512-skWxepWOs+VArEBWd2S/VR3wUavioIIx9/HzW+UJiIjtwa6+kNXdsOeq7FfxDXf56hIcL0ieo2brwMgBJ1+lhw==
@@ -634,6 +639,11 @@ astral-regex@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
+
+async@>=0.2.9:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
+  integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -1752,6 +1762,14 @@ flatted@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.1.tgz#c4b489e80096d9df1dfc97c79871aea7c617c469"
   integrity sha512-zAoAQiudy+r5SvnSw3KJy5os/oRJYHzrzja/tBDqrZtNhUw8bt6y8OBzMWcjWr+8liV8Eb6yOhw8WZ7VFZ5ZzA==
+
+fluent-ffmpeg@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/fluent-ffmpeg/-/fluent-ffmpeg-2.1.2.tgz#c952de2240f812ebda0aa8006d7776ee2acf7d74"
+  integrity sha1-yVLeIkD4EuvaCqgAbXd27irPfXQ=
+  dependencies:
+    async ">=0.2.9"
+    which "^1.1.1"
 
 follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.2"
@@ -3480,7 +3498,7 @@ proxy-addr@~2.0.5:
     forwarded "~0.1.2"
     ipaddr.js "1.9.1"
 
-proxy-from-env@^1.1.0:
+proxy-from-env@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
@@ -3593,10 +3611,10 @@ puppeteer-page-proxy@^1.2.8:
     socks-proxy-agent "^5.0.0"
     tough-cookie "^4.0.0"
 
-puppeteer@^7.0.0:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-7.0.4.tgz#f4b91b8a30eef29c53ff9a334123f23f87d42821"
-  integrity sha512-uHG4wXuJ3MuIAvvWJ5cycg+FgbSQEcCPTIKc7Y/nSGKN4UlT+9uFptgV/WgEAES2Dq71k1VwWSjj4pkXYI4tFg==
+puppeteer@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-7.0.0.tgz#be25ebf53edc1ecc09cb40af4a15f21fd1d38637"
+  integrity sha512-YNzucQMH7rKJAeISy9RB1nI72EMShlbT9vGT3E6UqElzOC4OuhFdIa3oirV4/57d/YIK5KO6qLM6UroCcyOVhw==
   dependencies:
     debug "^4.1.0"
     devtools-protocol "0.0.847576"
@@ -3605,7 +3623,7 @@ puppeteer@^7.0.0:
     node-fetch "^2.6.1"
     pkg-dir "^4.2.0"
     progress "^2.0.1"
-    proxy-from-env "^1.1.0"
+    proxy-from-env "^1.0.0"
     rimraf "^3.0.2"
     tar-fs "^2.0.0"
     unbzip2-stream "^1.3.3"
@@ -4445,10 +4463,10 @@ trim-newlines@^3.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.0.tgz#79726304a6a898aa8373427298d54c2ee8b1cb30"
   integrity sha512-C4+gOpvmxaSMKuEf9Qc134F1ZuOHVXKRbtEflf4NTtuuJDEIJ9p5PXsalL8SkeRw+qit1Mo+yuvMPAKwWg/1hA==
 
-ts-json-schema-generator@^0.83.2:
-  version "0.83.2"
-  resolved "https://registry.yarnpkg.com/ts-json-schema-generator/-/ts-json-schema-generator-0.83.2.tgz#7ca84afdd0d4fd8af91e462e001861dafe3a2809"
-  integrity sha512-hG7B9xLwMdUf9gGYaXDx65j2N+7zoX6TFn8I2Hk58yyUTRv7vrpB+/U3jsUEUCHxF527RAi6XGRGwiHSKFRuLg==
+ts-json-schema-generator@^0.84.0:
+  version "0.84.0"
+  resolved "https://registry.yarnpkg.com/ts-json-schema-generator/-/ts-json-schema-generator-0.84.0.tgz#af0446e5758fdce31634944ccaa68ea5b98fe3df"
+  integrity sha512-3u3Uf7S45epPRb5zgnDPqKxBlCVHYGATdnhNNfeVpHpgFDaASyOWoBgijS5x3FnmDMnHpDb4B9+AvZ49gxrksQ==
   dependencies:
     "@types/json-schema" "^7.0.6"
     commander "^7.0.0"
@@ -4722,6 +4740,13 @@ which-pm-runs@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/which-pm-runs/-/which-pm-runs-1.0.0.tgz#670b3afbc552e0b55df6b7780ca74615f23ad1cb"
   integrity sha1-Zws6+8VS4LVd9rd4DKdGFfI60cs=
+
+which@^1.1.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
+  integrity sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==
+  dependencies:
+    isexe "^2.0.0"
 
 which@^2.0.1:
   version "2.0.2"
