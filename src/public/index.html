@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Scan the QRCode!</title>
+    <title>Please wait...</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <script src="/socket.io/socket.io.js"></script>
@@ -10,8 +10,8 @@
 
 <body>
     <div class="center">
-        <h1 id="title" class="title">Scan the QRCode!</h1>
-        <img id="qr-img" class="qr hide" src="qrcode.png">
+        <h1 id="title" class="title">Please wait...</h1>
+        <img id="qr-img" class="qr hide">
     </div>
 </body>
 
@@ -19,7 +19,12 @@
     const qrcode = document.getElementById("qr-img");
     const socket = io(document.location.host); // localhost:port from browser address
 
-    socket.on("qr", () => qrcode.classList.remove("hide"));
+    socket.on("qr", qr => {
+        qrcode.src = qr
+        qrcode.classList.remove("hide")
+        document.querySelector("title").innerText = "Scan the QRCode!";
+        document.getElementById("title").innerText = "Scan the QRCode!";
+    });
     socket.on("authenticated", () => {
         document.getElementById("title").innerText = "Authenticated!";
         document.querySelector("title").innerText = "Authenticated"

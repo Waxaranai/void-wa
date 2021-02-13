@@ -1,30 +1,6 @@
 import VoidBot from "./libs/Void";
 import config from "./config";
-import { ev, QRFormat, QRQuality } from "@open-wa/wa-automate";
-import { existsSync, mkdirSync, unlinkSync, writeFileSync } from "fs";
-
-ev.on("**", (data, _, namespace) => {
-    const QRExist = existsSync("src/public/qrcode.png");
-    const scanned = data === "successfulScan" && namespace === "QR";
-    if (scanned && QRExist) {
-        console.log("Client authenticated! removing qrcode image.");
-        unlinkSync("src/public/qrcode.png");
-    }
-});
-ev.on("qr.**", qrcode => {
-    const QRExist = existsSync("src/public/qrcode.png");
-    console.log(`QRCode received! Scan it from http://localhost:${config.port}/qr`);
-    if (!existsSync("src/public")) mkdirSync("src/public");
-    if (QRExist) unlinkSync("src/public/qrcode.png");
-    writeFileSync("src/public/qrcode.png", Buffer.from(
-        qrcode.replace("data:image/png;base64,", ""),
-        "base64"
-    ));
-});
-ev.on("STARTUP.**", data => {
-    const QRExist = existsSync("src/public/qrcode.png");
-    if (QRExist && data === "SUCCESS") unlinkSync("src/public/qrcode.png");
-});
+import { QRFormat, QRQuality } from "@open-wa/wa-automate";
 
 new VoidBot(config, {
     authTimeout: 0,
