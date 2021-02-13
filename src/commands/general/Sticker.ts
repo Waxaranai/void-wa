@@ -18,11 +18,11 @@ export default class extends BaseCommand {
         const isQuotedImage = msg.quotedMsg && msg.quotedMsg.type === "image";
         const isQuotedVideo = msg.quotedMsg && msg.quotedMsg.type === "video";
         if (msg.isMedia || msg.type === "image" || isQuotedImage) {
-            const wait = await this.client.sendText(msg.chatId as any, "*Please wait...*");
+            const wait = await this.client.reply(msg.chatId as any, "*Please wait...*", msg.id as any);
             await this.create(msg, wait as string, isQuotedImage, false, isCropped);
         } else if (msg.type === "video" || isQuotedVideo) {
             if ((Number(msg.duration) || Number(msg.quotedMsg.duration)) >= 15) {
-                await this.client.sendText(msg.chatId as any, "Please use video/gif with duration under 15 seconds and try again.");
+                await this.client.reply(msg.chatId as any, "Please use video/gif with duration under 15 seconds and try again.", msg.id as any);
                 return undefined;
             }
             const wait = await this.client.sendText(msg.chatId as any, "*Please wait...* sometime it takes longer than 3 minutes");
