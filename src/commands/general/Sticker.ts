@@ -17,7 +17,7 @@ export default class extends BaseCommand {
         const isCropped = flags.includes("crop");
         const isQuotedImage = msg.quotedMsg && msg.quotedMsg.type === "image";
         const isQuotedVideo = msg.quotedMsg && msg.quotedMsg.type === "video";
-        if (msg.isMedia || msg.type === "image" || isQuotedImage) {
+        if (msg.type === "image" || isQuotedImage) {
             const wait = await this.client.reply(msg.chatId as any, "*Please wait...*", msg.id as any);
             await this.create(msg, wait as string, isQuotedImage, false, isCropped);
         } else if (msg.type === "video" || isQuotedVideo) {
