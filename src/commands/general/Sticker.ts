@@ -28,7 +28,7 @@ export default class extends BaseCommand {
             const wait = await this.client.reply(msg.chatId as any, "*Please wait...* sometime it takes longer than 3 minutes", msg.id as any);
             await this.create(msg, wait as string, isQuotedVideo, true, isCropped);
         } else {
-            await this.client.sendText(msg.chatId as any, `Please send image/video/gif with *${this.handler!.prefix}sticker* caption or reply on the file!`);
+            await this.client.reply(msg.chatId as any, `Please send image/video/gif with *${this.handler!.prefix}sticker* caption or reply on the file!`, msg.id as any);
         }
     }
 
@@ -46,7 +46,7 @@ export default class extends BaseCommand {
             await this.client.deleteMessage(message.chatId as any, waitMsg as any);
         } catch (e) {
             await this.client.deleteMessage(message.chatId as any, waitMsg as any);
-            await this.client.sendText(message.chatId as any, `An error occured when trying to create the sticker. ${isGif ? "try again with shorter video/gif" : ""}`);
+            await this.client.reply(message.chatId as any, `An error occured when trying to create the sticker. ${isGif ? "try again with shorter video/gif" : ""}`, message.id as any);
         }
     }
 }
