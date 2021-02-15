@@ -13,6 +13,6 @@ import BaseCommand from "../../libs/BaseCommand";
 export default class extends BaseCommand {
     public async exec(msg: Message): Promise<any> {
         if (!msg.fromMe) await this.client.sendText(msg.from, "Pong!");
-        else await this.client.sendText(msg.chatId as any, "Pong");
+        else await this.client.sendText(msg.chatId, "Pong");
     }
 }

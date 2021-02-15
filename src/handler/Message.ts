@@ -23,12 +23,12 @@ export default class MessageHandler {
             timestamps.set(msg.sender.id, now);
             if (msg.fromMe) timestamps.delete(msg.sender.id);
         } try {
-            await this.client.simulateTyping(msg.chatId as any, true);
+            await this.client.simulateTyping(msg.chatId, true);
             await command.exec(msg, args);
         } catch (error) {
             this.client.log.error(error);
         } finally {
-            await this.client.simulateTyping(msg.chatId as any, false);
+            await this.client.simulateTyping(msg.chatId, false);
         }
     }
 
@@ -44,7 +44,7 @@ export default class MessageHandler {
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
         if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
-            const adminList = await this.client.getGroupAdmins(msg.chatId as any) as string[];
+            const adminList = await this.client.getGroupAdmins(msg.chatId as Message["chat"]["groupMetadata"]["id"]) as string[];
             if (!adminList.includes(msg.sender.id)) return undefined;
         }
         if (!msg.fromMe && command.options.meOnly) return undefined;

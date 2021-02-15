@@ -21,7 +21,7 @@ export default class extends BaseCommand {
             for (const mod of modules) {
                 base += `*${this.firstUpperCase(mod.name)}*\n${mod.commands.map(x => x.id).join(", ") || "None"}\n`;
             }
-            await this.client.sendText(msg.chatId as any, base);
+            await this.client.sendText(msg.chatId, base);
             return undefined;
         }
         const detail = stripIndent(`
@@ -34,7 +34,7 @@ export default class extends BaseCommand {
 
         ℹ️ _<> means required and [ ] means optional, don't include <> or [ ] when using command._
         `);
-        await this.client.sendText(msg.chatId as any, detail);
+        await this.client.sendText(msg.chatId, detail);
     }
 
     private firstUpperCase(text: string): string {

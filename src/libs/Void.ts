@@ -20,7 +20,7 @@ export default class Void {
             void handler.loadAll();
             await client.onAnyMessage(async message => {
                 await client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
-                await client.sendSeen(message.chatId as any);
+                await client.sendSeen(message.chatId);
                 await handler.handle(message);
             });
             await client.onStateChanged(async state => {
