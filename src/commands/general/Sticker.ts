@@ -15,8 +15,8 @@ export default class extends BaseCommand {
     public async exec(msg: Message, query: string[]): Promise<void> {
         const { flags } = this.parseArgs(query);
         const isCropped = flags.includes("crop");
-        const isQuotedImage = msg.quotedMsg && msg.quotedMsg.type === "image";
-        const isQuotedVideo = msg.quotedMsg && msg.quotedMsg.type === "video";
+        const isQuotedImage = msg.quotedMsg.type === "image";
+        const isQuotedVideo = msg.quotedMsg.type === "video";
         if (msg.type === "image" || isQuotedImage) {
             const wait = await this.client.reply(msg.chatId, "*Please wait...*", msg.id) as Message["id"];
             await this.create(msg, wait, isQuotedImage, false, isCropped);
@@ -36,7 +36,7 @@ export default class extends BaseCommand {
         try {
             const msg = isQuoted ? message.quotedMsg : message;
             const media = await decryptMedia(msg, this.client.config.UserAgent);
-            const imageBase64 = `data:${msg.mimetype};base64,${media.toString("base64")}`;
+            const imageBase64 = `data:${msg.mimetype as string};base64,${media.toString("base64")}`;
             if (isGif) {
                 await this.client.sendMp4AsSticker(message.chatId, media.toString("base64"), { crop }, { author: "Void", pack: "Created by" });
                 await this.client.deleteMessage(message.chatId, waitMsg);
