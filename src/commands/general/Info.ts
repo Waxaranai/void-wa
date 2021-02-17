@@ -11,6 +11,6 @@ import BaseCommand from "../../libs/BaseCommand";
 })
 export default class extends BaseCommand {
     public exec(msg: Message): void {
-        void this.client.sendText(msg.chatId, "This bot was created by *Waxaranai#0606* with typescript and @open-wa/wa-automate. Give this project ⭐ at https://github.com/waxaranai/void");
+        void this.client.reply(msg.chatId, "This bot was created by *Waxaranai#0606* with typescript and @open-wa/wa-automate. Give this project ⭐ at https://github.com/waxaranai/void", msg.id);
     }
 }
