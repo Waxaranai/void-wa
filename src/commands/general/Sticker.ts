@@ -15,18 +15,18 @@ export default class extends BaseCommand {
     public async exec(msg: Message, query: string[]): Promise<void> {
         const { flags } = this.parseArgs(query);
         const isCropped = flags.includes("crop");
-        const isQuotedImage = msg.quotedMsg.type === "image";
-        const isQuotedVideo = msg.quotedMsg.type === "video";
+        const isQuotedImage = (msg.quotedMsg as Message | void) && msg.quotedMsg.type === "image";
+        const isQuotedVideo = (msg.quotedMsg as Message | void) && msg.quotedMsg.type === "video";
         if (msg.type === "image" || isQuotedImage) {
             const wait = await this.client.reply(msg.chatId, "*Please wait...*", msg.id) as Message["id"];
-            await this.create(msg, wait, isQuotedImage, false, isCropped);
+            await this.create(msg, wait, isQuotedImage as boolean, false, isCropped);
         } else if (msg.type === "video" || isQuotedVideo) {
             if ((Number(msg.duration) || Number(msg.quotedMsg.duration)) >= 15) {
                 await this.client.reply(msg.chatId, "Please use video/gif with duration under 15 seconds and try again.", msg.id);
                 return undefined;
             }
             const wait = await this.client.reply(msg.chatId, "*Please wait...* (sometimes it takes l-5 minutes to process)", msg.id) as Message["id"];
-            await this.create(msg, wait, isQuotedVideo, true, isCropped);
+            await this.create(msg, wait, isQuotedVideo as boolean, true, isCropped);
         } else {
             await this.client.reply(msg.chatId, `Please send image/video/gif with *${this.handler!.prefix}sticker* caption or reply on the file!`, msg.id);
         }
