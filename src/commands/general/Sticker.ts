@@ -15,18 +15,18 @@ export default class extends BaseCommand {
     public async exec(msg: Message, query: string[]): Promise<void> {
         const { flags } = this.parseArgs(query);
         const isCropped = flags.includes("crop");
-        const isQuotedImage = (msg.quotedMsg as Message | void) && msg.quotedMsg.type === "image";
-        const isQuotedVideo = (msg.quotedMsg as Message | void) && msg.quotedMsg.type === "video";
+        const isQuotedImage = msg.quotedMsg && msg.quotedMsg.type === "image";
+        const isQuotedVideo = msg.quotedMsg && msg.quotedMsg.type === "video";
         if (msg.type === "image" || isQuotedImage) {
             const wait = await this.client.reply(msg.chatId, "*Please wait...*", msg.id) as Message["id"];
-            await this.create(msg, wait, isQuotedImage as boolean, false, isCropped);
+            await this.create(msg, wait, isQuotedImage!, false, isCropped);
         } else if (msg.type === "video" || isQuotedVideo) {
-            if ((Number(msg.duration) || Number(msg.quotedMsg.duration)) >= 15) {
+            if ((Number(msg.duration) || Number(msg.quotedMsg!.duration)) >= 15) {
                 await this.client.reply(msg.chatId, "Please use video/gif with duration under 15 seconds and try again.", msg.id);
                 return undefined;
             }
             const wait = await this.client.reply(msg.chatId, "*Please wait...* (sometimes it takes 1-5 minutes to process)", msg.id) as Message["id"];
-            await this.create(msg, wait, isQuotedVideo as boolean, true, isCropped);
+            await this.create(msg, wait, isQuotedVideo!, true, isCropped);
         } else {
             await this.client.reply(msg.chatId, `Please send image/video/gif with *${this.handler!.prefix}sticker* caption or reply on the file!`, msg.id);
         }
@@ -34,7 +34,7 @@ export default class extends BaseCommand {
 
     private async create(message: Message, waitMsg: Message["id"], isQuoted: boolean, isGif = false, crop = false): Promise<void> {
         try {
-            const msg = isQuoted ? message.quotedMsg : message;
+            const msg = isQuoted ? message.quotedMsg! : message;
             const media = await decryptMedia(msg, this.client.config.UserAgent);
             const imageBase64 = `data:${msg.mimetype as string};base64,${media.toString("base64")}`;
             if (isGif) {
