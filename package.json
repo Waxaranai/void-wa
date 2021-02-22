@@ -12,7 +12,7 @@
         "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|js)\"",
         "lint:fix": "eslint --ignore-path .gitignore \"**/*.+(ts|js)\" --fix",
         "start": "node dist",
-        "start:dev": "ts-node -r dotenv/config src/index.ts",
+        "start:dev": "ts-node src/index.ts",
         "test": "yarn lint && yarn build"
     },
     "eslintConfig": {
