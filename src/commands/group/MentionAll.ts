@@ -18,8 +18,6 @@ export default class extends BaseCommand {
             if (member.isMe) continue;
             else result.push(`@${member.id.replace(/@c.us/g, "")}`);
         }
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error1
         await this.client.sendTextWithMentions(msg.chatId, result.join(" "), false);
     }
 }
