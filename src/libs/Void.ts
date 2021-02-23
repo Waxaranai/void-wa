@@ -16,7 +16,7 @@ export default class Void {
             const database = new DatabaseHandler(client);
             const handler = new MessageHandler(client, this.config.prefix);
             Object.assign(client, {
-                config, dn: database, handler,
+                config, db: database, handler,
                 log: createLogger(), util: new Util(client)
             });
             void handler.loadAll();
