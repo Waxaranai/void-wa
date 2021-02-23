@@ -35,8 +35,8 @@ export default class MessageHandler {
     public async handle(msg: Message): Promise<void> {
         const blocked = await this.client.getBlockedIds();
         if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
-        msg.body = msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body;
         const prefix = await this.getPrefix(msg);
+        Object.assign(msg, { prefix, body: msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body });
         if (!prefix || !prefix.length || !msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return undefined;
         const args = msg.body.slice(prefix.length).trim().split(/ +/g);
         const commandID = args.shift();

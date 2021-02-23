@@ -28,7 +28,7 @@ export default class extends BaseCommand {
             const wait = await this.client.reply(msg.chatId, "*Please wait...* (sometimes it takes 1-5 minutes to process)", msg.id) as Message["id"];
             await this.create(msg, wait, isQuotedVideo!, true, isCropped);
         } else {
-            await this.client.reply(msg.chatId, `Please send image/video/gif with *${this.handler!.prefix}sticker* caption or reply on the file!`, msg.id);
+            await this.client.reply(msg.chatId, `Please send image/video/gif with *${msg.prefix}sticker* caption or reply on the file!`, msg.id);
         }
     }
 

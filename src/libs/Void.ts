@@ -46,4 +46,7 @@ declare module "@open-wa/wa-automate" {
         util: Util;
         log: Logger;
     }
+    interface Message {
+        prefix: string;
+    }
 }

@@ -29,7 +29,7 @@ export default class extends BaseCommand {
         _${command.options.description.content ? command.options.description.content : "No description available"}_
 
         *Aliases:* ${command.options.aliases.join(", ") || "No aliases"}
-        *Usage:* ${command.options.description.usage ? `${handler.prefix}${command.id} ${command.options.description.usage}` : `${handler.prefix}${command.id}`}
+        *Usage:* ${command.options.description.usage ? `${msg.prefix}${command.id} ${command.options.description.usage}` : `${handler.prefix}${command.id}`}
         *Cooldown:* ${command.options.cooldown ? `${command.options.cooldown}s` : "10s"}
 
         ℹ️ _<> means required and [ ] means optional, don't include <> or [ ] when using command._
