@@ -1,9 +1,11 @@
 import { Client } from "@open-wa/wa-automate";
 import { connect, Connection } from "mongoose";
+import { settings } from "../models/index";
 
 export class DatabaseHandler {
     public connected = false;
     public connection: Connection | undefined;
+    public models = { settings };
     public constructor(public readonly client: Client) { }
     public async connect(): Promise<void> {
         const uri = process.env.MONGODB_URI;
