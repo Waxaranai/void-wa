@@ -14,13 +14,13 @@ export default class Void {
         this.qrHandler = new QrHandler(this.server);
         void create(options).then(async client => {
             const database = new DatabaseHandler(client);
-            const handler = new MessageHandler(client, this.config.prefix);
-            handler.loadAll();
             await database.connect();
+            const handler = new MessageHandler(client, this.config.prefix);
             Object.assign(client, {
                 config, db: database, handler,
                 log: createLogger(), util: new Util(client)
             });
+            void handler.loadAll();
             await client.onAnyMessage(async message => {
                 await client.getAmountOfLoadedMessages().then(msg => msg >= 3000 ? client.cutMsgCache() : msg);
                 await client.sendSeen(message.chatId);
