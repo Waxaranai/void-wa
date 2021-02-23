@@ -16,7 +16,7 @@ export class DatabaseHandler {
         try {
             const { connection } = await connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
             connection.once("open", () => this.client.log.info("Database connection opened!"));
-            connection.on("connected", () => this.client.log.info("Database conmected!"));
+            connection.on("connected", () => this.client.log.info("Database connected!"));
             connection.on("error", error => this.client.log.error(error));
             this.connection = connection;
             this.connected = true;
