@@ -20,7 +20,7 @@ export function createLogger(prod = false): winston.Logger {
             winston.format.printf(info => {
                 const { level, message, stack } = info;
                 const prefix = `[${format(Date.now(), "yyyy-MM-dd HH:mm:ss (x)")}] [${level}]`;
-                if (["error", "crit"].includes(level)) return `${prefix}: ${stack}`;
+                if (["error", "crit"].includes(level)) return `${prefix}: ${stack ?? message}`;
                 return `${prefix}: ${message}`;
             })
         )
@@ -30,7 +30,7 @@ export function createLogger(prod = false): winston.Logger {
             winston.format.printf(info => {
                 const { level, message, stack } = info;
                 const prefix = `[${format(Date.now(), "yyyy-MM-dd HH:mm:ss (x)")}] [${level}]`;
-                if (["error", "alert"].includes(level) && !prod) return `${prefix}: ${stack}`;
+                if (["error", "alert"].includes(level) && !prod) return `${prefix}: ${stack ?? message}`;
                 return `${prefix}: ${message}`;
             }),
             winston.format.align(),
