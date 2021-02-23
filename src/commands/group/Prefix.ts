@@ -15,7 +15,7 @@ import BaseCommand from "../../libs/BaseCommand";
 })
 export default class extends BaseCommand {
     public async exec(msg: Message, query: string[]): Promise<void> {
-        const regex = /^([-@.;^$!*=~+\/#&+,\w])*$/;
+        const regex = /^([-@.;^$!*=~+?<>\/#&+,\w])*$/;
         const defaultPrefix = this.client.config.prefix;
         const { flags, args } = this.parseArgs(query);
         if (flags.includes("reset")) {
