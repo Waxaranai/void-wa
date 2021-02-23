@@ -33,11 +33,12 @@ export default class MessageHandler {
     }
 
     public async handle(msg: Message): Promise<void> {
+        Object.assign(msg, { body: msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body });
         const blocked = await this.client.getBlockedIds();
         if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
         const prefix = await this.getPrefix(msg);
-        Object.assign(msg, { prefix, body: msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body });
         if (!prefix || !prefix.length || !msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return undefined;
+        Object.assign(msg, { prefix });
         const args = msg.body.slice(prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
         const command = this.commands.get(commandID!.toLowerCase()) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
