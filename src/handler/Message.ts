@@ -37,10 +37,10 @@ export default class MessageHandler {
         if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
         msg.body = msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body;
         const prefix = await this.getPrefix(msg);
-        if (!prefix || !prefix.length || !msg.body.startsWith(prefix)) return undefined;
-        const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
+        if (!prefix || !prefix.length || !msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return undefined;
+        const args = msg.body.slice(prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
-        const command = this.commands.get(commandID!) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
+        const command = this.commands.get(commandID!.toLowerCase()) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
@@ -65,7 +65,7 @@ export default class MessageHandler {
             prefixes.push(settings.prefix);
         }
         for (const prefix of prefixes) {
-            if (msg.body.startsWith(prefix)) return prefix;
+            if (msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return prefix;
         }
     }
 
