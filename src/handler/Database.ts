@@ -12,11 +12,11 @@ export class DatabaseHandler {
             process.exit(1);
         }
         try {
-            const db = await connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
-            db.connection.once("open", () => this.client.log.info("Database conmected!"));
-            db.connection.on("connected", () => this.client.log.info("Database conmected!"));
-            db.connection.on("error", error => this.client.log.error(error));
-            this.connection = db.connection;
+            const { connection } = await connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+            connection.once("open", () => this.client.log.info("Database conmected!"));
+            connection.on("connected", () => this.client.log.info("Database conmected!"));
+            connection.on("error", error => this.client.log.error(error));
+            this.connection = connection;
             this.connected = true;
         } catch (e) {
             this.client.log.error(e);
