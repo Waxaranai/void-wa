@@ -4,10 +4,7 @@ import { connect, Connection } from "mongoose";
 export class DatabaseHandler {
     public connected = false;
     public connection: Connection | undefined;
-    public constructor(public readonly client: Client) {
-        void this.connect();
-    }
-
+    public constructor(public readonly client: Client) { }
     public async connect(): Promise<void> {
         const uri = process.env.MONGODB_URI;
         if (!uri) {
