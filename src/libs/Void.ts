@@ -6,15 +6,17 @@ import { createLogger } from "./Logger";
 import { create, ConfigObject } from "@open-wa/wa-automate";
 import { VoidServer } from "./VoidServer";
 import { QrHandler } from "../handler/Qr";
+import { DatabaseHandler } from "../handler/Database";
 export default class Void {
     public qrHandler!: QrHandler;
     private readonly server = new VoidServer(this, VoidConfig.port);
     public constructor(public readonly config: typeof VoidConfig, public readonly options: ConfigObject) {
         this.qrHandler = new QrHandler(this.server);
         void create(options).then(async client => {
+            const database = new DatabaseHandler(client);
             const handler = new MessageHandler(client, this.config.prefix);
             Object.assign(client, {
-                config, handler,
+                config, dn: database, handler,
                 log: createLogger(), util: new Util(client)
             });
             void handler.loadAll();
@@ -38,9 +40,9 @@ export default class Void {
 declare module "@open-wa/wa-automate" {
     interface Client {
         handler: MessageHandler;
+        db: DatabaseHandler;
         config: typeof VoidConfig;
         util: Util;
         log: Logger;
-        managers: { server: VoidServer; qr: QrHandler };
     }
 }
