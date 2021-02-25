@@ -32,11 +32,11 @@
         "rimraf": "^3.0.2",
         "sharp": "^0.27.2",
         "ts-node": "^9.1.1",
-        "typescript": "^4.1.5"
+        "typescript": "^4.2.2"
     },
     "dependencies": {
         "@hazmi35/eslint-config": "hazmi35/eslint-config",
-        "@open-wa/wa-automate": "^3.6.5",
+        "@open-wa/wa-automate": "^3.6.9",
         "common-tags": "^1.8.0",
         "date-fns": "^2.17.0",
         "eslint": "^7.19.0",
