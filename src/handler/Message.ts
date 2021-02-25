@@ -33,13 +33,15 @@ export default class MessageHandler {
     }
 
     public async handle(msg: Message): Promise<void> {
+        Object.assign(msg, { body: msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body });
         const blocked = await this.client.getBlockedIds();
         if (blocked.includes(msg.sender.id) && !msg.fromMe) return undefined;
-        msg.body = msg.type === "chat" ? msg.body : (msg.type === "image" && msg.caption) ? msg.caption : (msg.type === "video" && msg.caption) ? msg.caption : msg.body;
-        if (!this.prefix.length || !msg.body.startsWith(this.prefix)) return undefined;
-        const args = msg.body.slice(this.prefix.length).trim().split(/ +/g);
+        const prefix = await this.getPrefix(msg);
+        if (!prefix || !prefix.length || !msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return undefined;
+        Object.assign(msg, { prefix });
+        const args = msg.body.slice(prefix.length).trim().split(/ +/g);
         const commandID = args.shift();
-        const command = this.commands.get(commandID!) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
+        const command = this.commands.get(commandID!.toLowerCase()) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
@@ -51,6 +53,21 @@ export default class MessageHandler {
         if (msg.isGroupMsg && command.options.privateOnly) return undefined;
         if (!msg.isGroupMsg && command.options.groupOnly) return undefined;
         await this.runCommand(msg, args, command);
+    }
+
+    public async getPrefix(msg: Message): Promise<string | void> {
+        const prefixes: string[] = [this.client.config.prefix];
+        if (msg.isGroupMsg) {
+            const settings = await this.client.db.models.settings.findOne({ group: msg.chatId });
+            if (!settings) {
+                const data = Object.assign(this.client.config.defaultSettings, { group: msg.chatId });
+                await this.client.db.models.settings.findOneAndUpdate({ group: msg.chatId }, data, { upsert: true, new: true });
+            }
+            prefixes.push(settings.prefix);
+        }
+        for (const prefix of prefixes) {
+            if (msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return prefix;
+        }
     }
 
     public loadAll(): void {

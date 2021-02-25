@@ -7,6 +7,7 @@ Void Bot is a Whatsapp Bot, this is my first open source project, if there is a 
 - Nodejs v10.18.1+ (due to puppeteer)
 - Typescript v3.9x+
 - latest version of Google Chrome
+- MongoDB
 
 ### Installation
 Clone this project
@@ -24,14 +25,14 @@ Install the dependencies (`make sure you're in the project directory that you've
 > yarn
 ```
 ### Using the bot
-
-1. Build the code 
+1. Create `.env` and fill out the `MONGODB_URI` (For example you can see `.env.example`)
+2. Build the code 
 ```bash
 > npm run build
 # or with yarn
 > yarn build
 ```
-2. Run the code
+3. Run the code
 ```bash
 > npm start
 # or with yarn
