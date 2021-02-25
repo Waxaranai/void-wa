@@ -4,8 +4,8 @@ Void Bot is a Whatsapp Bot, this is my first open source project, if there is a 
 **NOTE:** I can't guarantee you will not be blocked by using this code, although it has worked for me. WhatsApp does not allow bots or unofficial clients on their platform, so this shouldn't be considered totally safe.
 
 ### Prerequisites
-- Nodejs v10.18.1+ (due to puppeteer)
-- Typescript v3.9x+
+- Nodejs v14 LTS
+- Typescript latest
 - latest version of Google Chrome
 - MongoDB
 
@@ -61,7 +61,3 @@ Fix Stuck on linux, install google chrome stable:
 
 ### Donate
 * [`Saweria`](https://saweria.co/donate/waxaranai)
-
-### Inspired by
-* [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
-* [`MhankBarBar/whatsapp-bot`](https://github.com/MhankBarBar/whatsapp-bot)
