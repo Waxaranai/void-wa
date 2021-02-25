@@ -93,10 +93,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@open-wa/wa-automate@^3.6.5":
-  version "3.6.9"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.6.9.tgz#58dbfb4374128d50cf3864b367439932e248b5f0"
-  integrity sha512-QuMAss+2JzsNdq8ucF9XZr7NIK+JxALkAANaWypcQYlsaiAoWSv2crjS/NJudFZaZehAAp5jAtPA0LBK6yPfNQ==
+"@open-wa/wa-automate@3.6.10":
+  version "3.6.10"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.6.10.tgz#04695bd5a2ee08303e0ef1da3d4301dfbddef82d"
+  integrity sha512-ULbf8fOLp4JuxRImcfk1WEyz8m+El1vOomxPtHqyladz1vrf6l6QziFs1YDCcnwQgijoem3ZngOvuUsqueguSA==
   dependencies:
     "@open-wa/wa-decrypt" "^3.0.1"
     "@types/sharp" "^0.27.1"
@@ -5757,7 +5757,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.1.5:
+typescript@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.2.tgz#1450f020618f872db0ea17317d16d8da8ddb8c4c"
   integrity sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
