@@ -1,3 +1,4 @@
+import "dotenv/config";
 import VoidBot from "./libs/Void";
 import config from "./config";
 import { QRFormat, QRQuality } from "@open-wa/wa-automate";
