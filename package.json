@@ -1,7 +1,7 @@
 {
     "name": "void-wa",
     "version": "1.0.0",
-    "description": "Whatsapp Bot",
+    "description": "Void is a whatsapp bot created with @open-wa/wa-automate and written in typescript",
     "main": "dist",
     "repository": "https://github.com/Waxaranai/void-wa.git",
     "author": "Waxaranai",
