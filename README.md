@@ -1,5 +1,5 @@
 # Void Bot
-Void Bot is a Whatsapp Bot, this is my first open source project, if there is a mistake feel free to open a issues.
+Void is a whatsapp bot created with @open-wa/wa-automate and written in typescript, and this is my first open source project, if there is a mistake feel free to open a issues.
 
 **NOTE:** I can't guarantee you will not be blocked by using this code, although it has worked for me. WhatsApp does not allow bots or unofficial clients on their platform, so this shouldn't be considered totally safe.
 
