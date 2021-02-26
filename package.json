@@ -1,9 +1,9 @@
 {
-    "name": "void",
+    "name": "void-wa",
     "version": "1.0.0",
     "description": "Whatsapp Bot",
     "main": "dist",
-    "repository": "https://github.com/Waxaranai/void.git",
+    "repository": "https://github.com/Waxaranai/void-wa.git",
     "author": "Waxaranai",
     "license": "GPL-3.0",
     "private": false,
