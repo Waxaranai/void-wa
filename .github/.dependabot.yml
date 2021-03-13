@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: yarn
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 99
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
