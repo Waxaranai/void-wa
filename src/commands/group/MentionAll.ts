@@ -5,6 +5,7 @@ import BaseCommand from "../../libs/BaseCommand";
     adminOnly: true,
     aliases: ["everyone"],
     category: "group",
+    cooldown: 60,
     description: {
         content: "Mention all group members"
     },
