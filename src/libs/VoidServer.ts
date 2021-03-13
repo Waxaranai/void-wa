@@ -2,9 +2,9 @@ import http from "http";
 import Void from "./Void";
 import express from "express";
 import { resolve } from "path";
+import { QrHandler } from "../handler/Qr";
 import { createLogger } from "../utils/Logger";
 import { Server as SocketServer, Socket } from "socket.io";
-import { QrHandler } from "../handler/Qr";
 
 export class VoidServer {
     public app = express();
