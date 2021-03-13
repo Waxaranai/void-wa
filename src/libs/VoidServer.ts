@@ -4,6 +4,7 @@ import express from "express";
 import { resolve } from "path";
 import { createLogger } from "../utils/Logger";
 import { Server as SocketServer, Socket } from "socket.io";
+import { QrHandler } from "../handler/Qr";
 
 export class VoidServer {
     public app = express();
@@ -12,6 +13,7 @@ export class VoidServer {
     public ready = false;
     public readonly logger = createLogger();
     private readonly io = new SocketServer(this.httpServer);
+    private readonly qrHandler = new QrHandler(this);
     public constructor(private readonly client: Void, public readonly port: number) {
         this.app.use("/style.css", express.static(resolve("src/public/style.css")));
         this.app.set("view engine", "html");
@@ -20,7 +22,7 @@ export class VoidServer {
             this.ready = true;
         });
         this.app.get("/qr", (_, response) => {
-            if (this.client.qrHandler.isAuthenticated && this.socket) this.socket.emit("authenticated");
+            if (this.qrHandler.isAuthenticated && this.socket) this.socket.emit("authenticated");
             return response.status(200).sendFile(resolve("src/public/index.html"));
         });
         this.app.get("*", (_, response) => response.redirect("/qr"));

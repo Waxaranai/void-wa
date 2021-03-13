@@ -4,13 +4,10 @@ import MessageHandler from "../handler/Message";
 import { Logger } from "winston";
 import { create, ConfigObject } from "@open-wa/wa-automate";
 import { VoidServer } from "./VoidServer";
-import { QrHandler } from "../handler/Qr";
 import { DatabaseHandler } from "../handler/Database";
 export default class Void {
-    public qrHandler!: QrHandler;
     private readonly server = new VoidServer(this, VoidConfig.port);
     public constructor(public readonly config: typeof VoidConfig, public readonly options: ConfigObject) {
-        this.qrHandler = new QrHandler(this.server);
         void create(options).then(async client => {
             const database = new DatabaseHandler(client);
             const handler = new MessageHandler(client, this.config.prefix);
