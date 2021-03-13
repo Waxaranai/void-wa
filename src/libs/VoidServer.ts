@@ -2,7 +2,7 @@ import http from "http";
 import Void from "./Void";
 import express from "express";
 import { resolve } from "path";
-import { createLogger } from "../libs/Logger";
+import { createLogger } from "../utils/Logger";
 import { Server as SocketServer, Socket } from "socket.io";
 
 export class VoidServer {

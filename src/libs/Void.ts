@@ -1,8 +1,8 @@
-import Util from "./Util";
+import Util from "../utils/Util";
 import VoidConfig from "../config";
 import MessageHandler from "../handler/Message";
 import { Logger } from "winston";
-import { createLogger } from "./Logger";
+import { createLogger } from "../utils/Logger";
 import { create, ConfigObject } from "@open-wa/wa-automate";
 import { VoidServer } from "./VoidServer";
 import { QrHandler } from "../handler/Qr";

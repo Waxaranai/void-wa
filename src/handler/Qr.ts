@@ -1,5 +1,5 @@
 import { ev as event } from "@open-wa/wa-automate";
-import { createLogger } from "../libs/Logger";
+import { createLogger } from "../utils/Logger";
 import { VoidServer } from "../libs/VoidServer";
 
 export class QrHandler {
