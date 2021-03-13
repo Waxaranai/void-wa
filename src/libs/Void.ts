@@ -2,7 +2,6 @@ import Util from "../utils/Util";
 import VoidConfig from "../config";
 import MessageHandler from "../handler/Message";
 import { Logger } from "winston";
-import { createLogger } from "../utils/Logger";
 import { create, ConfigObject } from "@open-wa/wa-automate";
 import { VoidServer } from "./VoidServer";
 import { QrHandler } from "../handler/Qr";
@@ -17,7 +16,7 @@ export default class Void {
             const handler = new MessageHandler(client, this.config.prefix);
             Object.assign(client, {
                 config, db: database, handler,
-                log: createLogger(), util: new Util(client)
+                log: this.server.logger, util: new Util(client)
             });
             void handler.loadAll();
             await database.connect();

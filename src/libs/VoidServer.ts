@@ -10,8 +10,8 @@ export class VoidServer {
     public httpServer = http.createServer(this.app);
     public socket: Socket | undefined;
     public ready = false;
+    public readonly logger = createLogger();
     private readonly io = new SocketServer(this.httpServer);
-    private readonly log = createLogger();
     public constructor(private readonly client: Void, public readonly port: number) {
         this.app.use("/style.css", express.static(resolve("src/public/style.css")));
         this.app.set("view engine", "html");
@@ -24,6 +24,6 @@ export class VoidServer {
             return response.status(200).sendFile(resolve("src/public/index.html"));
         });
         this.app.get("*", (_, response) => response.redirect("/qr"));
-        this.httpServer.listen(port, () => this.log.info(`Listening to ${this.port}`));
+        this.httpServer.listen(port, () => this.logger.info(`Listening to ${this.port}`));
     }
 }
