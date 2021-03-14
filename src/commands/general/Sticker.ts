@@ -20,6 +20,9 @@ export default class extends BaseCommand {
         if (msg.type === "image" || isQuotedImage) {
             const wait = await this.client.reply(msg.chatId, "*Please wait...*", msg.id) as Message["id"];
             await this.create(msg, wait, isQuotedImage!, false, isCropped);
+        } else if (msg.quotedMsg && msg.quotedMsg.type === "document" && ["image/png", "image/jpg", "image/jpeg", "image/webp"].includes(msg.quotedMsg.mimetype!)) {
+            const wait = await this.client.reply(msg.chatId, "*Please wait...*", msg.id) as Message["id"];
+            await this.create(msg, wait, true, false, isCropped);
         } else if (msg.type === "video" || isQuotedVideo) {
             if ((Number(msg.duration) || Number(msg.quotedMsg!.duration)) >= 15) {
                 await this.client.reply(msg.chatId, "Please use video/gif with duration under 15 seconds and try again.", msg.id);
@@ -28,7 +31,7 @@ export default class extends BaseCommand {
             const wait = await this.client.reply(msg.chatId, "*Please wait...* (sometimes it takes 1-5 minutes to process)", msg.id) as Message["id"];
             await this.create(msg, wait, isQuotedVideo!, true, isCropped);
         } else {
-            await this.client.reply(msg.chatId, `Please send image/video/gif with *${msg.prefix}sticker* caption or reply on the file!`, msg.id);
+            await this.client.reply(msg.chatId, `Please send a image/video/gif with *${msg.prefix}sticker* caption or reply it on the file! You can also send a image as document then reply it with *${msg.prefix}sticker*`, msg.id);
         }
     }
 
