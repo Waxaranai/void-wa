@@ -4,7 +4,7 @@ Void is a whatsapp bot created with [@open-wa/wa-automate](https://github.com/op
 
 **NOTE:** I can't guarantee you will not be blocked by using this code, although it has worked for me. WhatsApp does not allow bots or unofficial clients on their platform, so this shouldn't be considered totally safe.
 
-### *You can use my [link](https://gumroad.com/a/546575475) to get **50%** off when purchasing the lisence key on [Gumroad](https://gumroad.com/l/open-wa)*
+### *You can use my [link](https://gumroad.com/a/546575475) to support me when purchasing the lisence key on [Gumroad](https://gumroad.com/l/open-wa)*
 
 ### **Prerequisites**
 - [node.js](https://nodejs.org/en/download/) v14 LTS
