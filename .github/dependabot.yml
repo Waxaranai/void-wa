@@ -4,9 +4,12 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-    time: "22:00"
+    time: "12:00"
+    timezone: "Asia/Jakarta"
   open-pull-requests-limit: 99
   commit-message:
     prefix: fix
     prefix-development: chore
     include: scope
+  reviewers:
+    - "waxaranai"
