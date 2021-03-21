@@ -92,10 +92,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@open-wa/wa-automate@^3.9.6":
-  version "3.9.6"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.9.6.tgz#fc4b826f7eb732182564dacc58a27519ca0a5fa3"
-  integrity sha512-TioDMl1pvYj2w/OSSWwuvtO/x2tIOI1sAVYOhwVH2K1KPotZ+rvY6+pRv6XgpMlFgY8kzrBDRN6p1l/t1OPUMQ==
+"@open-wa/wa-automate@^3.9.11":
+  version "3.9.11"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.9.11.tgz#8cb485f9b32c7bf32d78128059dd9b5155ac82e9"
+  integrity sha512-WNLCDWOLvnCSsIJSxR4YpdkCzrHAjh8kW8BGlDm2W7OyXEgBvOSfRKPvrFzj6JEsl2rNA3dzEQOBsw7ax1jEVQ==
   dependencies:
     "@open-wa/wa-decrypt" "^3.1.0"
     "@types/sharp" "^0.27.1"
