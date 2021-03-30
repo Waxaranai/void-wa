@@ -89,10 +89,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@open-wa/wa-automate@^3.9.15":
-  version "3.9.15"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.9.15.tgz#ca7a84a7f0d09e8bc3ebf6131bcc62aefbeaa510"
-  integrity sha512-S25+GgaNAZAF5PLyOomaZ5vjrpt7WVNO0VPIidfb0DZHApJOeRB8cym42ICJT0QHWatOwDpO2C4lpgCcF/A/RA==
+"@open-wa/wa-automate@^3.10.4":
+  version "3.10.4"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.10.4.tgz#544a5310a892f5d3df0669175d75b725c2189599"
+  integrity sha512-hYhKCxRIq9Rn4pc2/HgkkAns5riem2Vk7DGAvlMHzrhJjWlyJtfPeihxfv2iM4YyZfaVDihDYLihpRDlarAsUQ==
   dependencies:
     "@discordjs/collection" "^0.1.6"
     "@open-wa/wa-decrypt" "^3.1.0"
@@ -136,7 +136,7 @@
     rxjs "^6.5.3"
     socket.io "^3.0.0"
     spinnies "^0.5.1"
-    swagger-stats "^0.95.18"
+    swagger-stats "^0.95.19"
     swagger-ui-dist "^3.36.1"
     swagger-ui-express "^4.1.4"
     tcp-port-used "^1.0.1"
@@ -755,11 +755,6 @@ bcryptjs@^2.3.0:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
   integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
-
-bintrees@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bintrees/-/bintrees-1.0.1.tgz#0e655c9b9c2435eaab68bf4027226d2b55a34524"
-  integrity sha1-DmVcm5wkNeqraL9AJyJtK1WjRSQ=
 
 bl@^2.2.1:
   version "2.2.1"
@@ -3971,13 +3966,6 @@ progress@^2.0.0, progress@^2.0.1:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-prom-client@^11.5.3:
-  version "11.5.3"
-  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-11.5.3.tgz#5fedfce1083bac6c2b223738e966d0e1643756f8"
-  integrity sha512-iz22FmTbtkyL2vt0MdDFY+kWof+S9UB/NACxSn2aJcewtw+EERsen0urSkZ2WrHseNdydsvcxCTAnPcSMZZv4Q==
-  dependencies:
-    tdigest "^0.1.1"
-
 protocols@^1.1.0, protocols@^1.4.0:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/protocols/-/protocols-1.4.8.tgz#48eea2d8f58d9644a4a32caae5d5db290a075ce8"
@@ -4996,17 +4984,16 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-swagger-stats@^0.95.18:
-  version "0.95.18"
-  resolved "https://registry.yarnpkg.com/swagger-stats/-/swagger-stats-0.95.18.tgz#a7feb50098721d10b92dc5238e6d1beba389e99a"
-  integrity sha512-SRq7I+VUMZVm4WR2sZbMXEuB+Cu8sp3bJVeI3UltNQmismU+uswP6gA8MCPLs5t3oBzrn+wrCE8OVh4USjtZQw==
+swagger-stats@^0.95.19:
+  version "0.95.19"
+  resolved "https://registry.yarnpkg.com/swagger-stats/-/swagger-stats-0.95.19.tgz#550ac78111c0d235b17f61e393ec984cd0e4a81b"
+  integrity sha512-elomqM1Ei2x/Vjg5GBdDxd0iwtlCpyWuKY4g/IR4Fb1mDBagIa1VIkEv1SoiBCk+1NaXa4R91TOgMIOd6IGtsA==
   dependencies:
     basic-auth "^2.0.1"
     cookies "^0.8.0"
     debug "^4.1.1"
     moment "^2.24.0"
     path-to-regexp "^6.1.0"
-    prom-client "^11.5.3"
     qs "^6.9.1"
     request "^2.88.0"
     send "^0.17.1"
@@ -5062,13 +5049,6 @@ tcp-port-used@^1.0.1:
   dependencies:
     debug "4.3.1"
     is2 "^2.0.6"
-
-tdigest@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/tdigest/-/tdigest-0.1.1.tgz#2e3cb2c39ea449e55d1e6cd91117accca4588021"
-  integrity sha1-Ljyyw56kSeVdHmzZEReszKRYgCE=
-  dependencies:
-    bintrees "1.0.1"
 
 terminal-link@^2.1.1:
   version "2.1.1"
