@@ -17,6 +17,7 @@ new VoidBot(config, {
     ],
     deleteSessionDataOnLogout: false,
     disableSpins: true,
+    eventMode: false,
     headless: true,
     killProcessOnBrowserClose: true,
     qrFormat: QRFormat.PNG,
