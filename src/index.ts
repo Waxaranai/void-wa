@@ -6,6 +6,7 @@ import { QRFormat, QRQuality } from "@open-wa/wa-automate";
 new VoidBot(config, {
     authTimeout: 0,
     cacheEnabled: false,
+    cachedPatch: true,
     chromiumArgs: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
@@ -17,7 +18,6 @@ new VoidBot(config, {
     ],
     deleteSessionDataOnLogout: false,
     disableSpins: true,
-    eventMode: false,
     headless: true,
     killProcessOnBrowserClose: true,
     qrFormat: QRFormat.PNG,
