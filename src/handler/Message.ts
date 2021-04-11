@@ -1,6 +1,6 @@
+import BaseCommand from "../libs/BaseCommand";
 import { Client, Message } from "@open-wa/wa-automate";
 import { ICategories } from "../typings";
-import BaseCommand from "../libs/BaseCommand";
 import { join } from "path";
 
 export default class MessageHandler {
@@ -46,7 +46,9 @@ export default class MessageHandler {
         if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
         if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
+            const { me } = await this.client.getMe();
             const adminList = await this.client.getGroupAdmins(msg.chatId as Message["chat"]["groupMetadata"]["id"]) as string[];
+            if (!adminList.includes(me._serialized)) adminList.push(me._serialized);
             if (!adminList.includes(msg.sender.id)) return undefined;
         }
         if (!msg.fromMe && command.options.meOnly) return undefined;
@@ -66,6 +68,7 @@ export default class MessageHandler {
             prefixes.push(settings.prefix);
         }
         for (const prefix of prefixes) {
+            if (!msg.body) continue;
             if (msg.body.toLowerCase().startsWith(prefix.toLowerCase())) return prefix;
         }
     }
