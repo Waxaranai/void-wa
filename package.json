@@ -38,7 +38,7 @@
         "@hazmi35/eslint-config": "hazmi35/eslint-config",
         "@open-wa/wa-automate": "^3.10.15",
         "common-tags": "^1.8.0",
-        "date-fns": "^2.20.1",
+        "date-fns": "^2.20.3",
         "eslint": "^7.23.0",
         "express": "^4.17.1",
         "mongoose": "5.11.13",
