@@ -43,7 +43,7 @@ export default class MessageHandler {
         const commandID = args.shift();
         const command = this.commands.get(commandID!.toLowerCase()) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
-        if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
+        if (!msg.chat.canSend) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
         if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
             const { me } = await this.client.getMe();
@@ -65,7 +65,7 @@ export default class MessageHandler {
                 const data = Object.assign(this.client.config.defaultSettings, { group: msg.chatId });
                 await this.client.db.models.settings.findOneAndUpdate({ group: msg.chatId }, data, { upsert: true, new: true });
             }
-            prefixes.push(settings.prefix);
+            prefixes.push(settings?.prefix as string);
         }
         for (const prefix of prefixes) {
             if (!msg.body) continue;
