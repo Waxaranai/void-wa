@@ -65,7 +65,7 @@ export default class MessageHandler {
                 const data = Object.assign(this.client.config.defaultSettings, { group: msg.chatId });
                 await this.client.db.models.settings.findOneAndUpdate({ group: msg.chatId }, data, { upsert: true, new: true });
             }
-            prefixes.push(settings.prefix);
+            prefixes.push(settings?.prefix as string);
         }
         for (const prefix of prefixes) {
             if (!msg.body) continue;

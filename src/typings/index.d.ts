@@ -40,9 +40,3 @@ export interface IParsedArgs {
     args: string[];
     flags: string[];
 }
-
-export interface IDefaultSettings{
-    prefix: string;
-    group: string;
-    banlist: string[];
-}
