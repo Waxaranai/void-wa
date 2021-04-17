@@ -43,7 +43,7 @@ export default class MessageHandler {
         const commandID = args.shift();
         const command = this.commands.get(commandID!.toLowerCase()) ?? Array.from(this.commands.values()).find(x => x.options.aliases.includes(commandID!));
         if (!command) return undefined;
-        if (msg.isGroupMsg && msg.chat.isReadOnly) return undefined;
+        if (!msg.chat.canSend) return undefined;
         if (command.options.adminOnly && !command.options.groupOnly) return undefined;
         if (msg.isGroupMsg && command.options.adminOnly && command.options.groupOnly) {
             const { me } = await this.client.getMe();
