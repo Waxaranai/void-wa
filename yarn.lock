@@ -89,10 +89,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@open-wa/wa-automate@^3.13.2":
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.13.2.tgz#8cd48f829bd6abe2fbc14f9d648a40b659b9ec98"
-  integrity sha512-fI169RgaEqM/nu13M94Ptz9wVlPzxmHmyDR/dpxVuss0H97I1UV0Bhr2u6Ee8ED3t8/NNfC2QDNRaThRuDGbSw==
+"@open-wa/wa-automate@^3.14.1":
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/@open-wa/wa-automate/-/wa-automate-3.14.1.tgz#1e004c724070fc02d2187f89ce215d88e3290865"
+  integrity sha512-pP83R/QjYV2hsxxDdTxIgwu3eUYgaaDaicwzfbdM/flPidlPm8mVBlK+rFwcCwHVpVlDFwYQrCE56QBBOGBXyA==
   dependencies:
     "@discordjs/collection" "^0.1.6"
     "@open-wa/wa-decrypt" "^3.1.0"
@@ -114,6 +114,7 @@
     express "^4.17.1"
     express-robots-txt "^0.5.0"
     find-up "^5.0.0"
+    fs-extra "^7.0.1"
     get-port "^5.1.1"
     hasha "^5.2.0"
     image-type "^4.1.0"
@@ -149,6 +150,7 @@
     tree-kill "^1.2.2"
     ts-json-schema-generator "^0.92.0"
     ts-morph "^10.0.2"
+    type-fest "^0.20.2"
     update-notifier "^5.0.0"
     uuid "^8.3.2"
     uuid-apikey "^1.4.6"
