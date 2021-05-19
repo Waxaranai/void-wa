@@ -36,7 +36,7 @@
     },
     "dependencies": {
         "@hazmi35/eslint-config": "hazmi35/eslint-config",
-        "@open-wa/wa-automate": "^3.13.2",
+        "@open-wa/wa-automate": "^3.15.2",
         "common-tags": "^1.8.0",
         "date-fns": "^2.21.3",
         "eslint": "^7.26.0",
