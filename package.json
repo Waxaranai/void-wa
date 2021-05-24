@@ -39,7 +39,7 @@
         "@open-wa/wa-automate": "^3.13.2",
         "common-tags": "^1.8.0",
         "date-fns": "^2.21.3",
-        "eslint": "^7.26.0",
+        "eslint": "^7.27.0",
         "express": "^4.17.1",
         "mongoose": "^5.12.9",
         "socket.io": "^4.1.1",
