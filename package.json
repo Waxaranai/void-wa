@@ -32,7 +32,7 @@
         "rimraf": "^3.0.2",
         "sharp": "^0.28.3",
         "ts-node": "^10.0.0",
-        "typescript": "^4.2.4"
+        "typescript": "^4.3.2"
     },
     "dependencies": {
         "@hazmi35/eslint-config": "hazmi35/eslint-config",
